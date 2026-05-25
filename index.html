@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Behavior Generative Studies · 行为生成学 · V0.4.2 UI Realignment + Red/Blue Dual-Mode Aesthetic Edition · Strategic behavior generation under finite cognition · Induction / Compression / Collapse / Extremization / Execution · Wei Jueran · 魏珏然 · xingyeLing7Ai · 427Hz">
-<title>Behavior Generative Studies V0.4.2 · UI Realignment + Red/Blue Dual-Mode · 行为生成学</title>
+<meta name="description" content="Behavior Generative Studies · 行为生成学 · V0.4.3 Bilingual URL-Switch Edition (基于 V0.4.2) · Strategic behavior generation under finite cognition · Induction / Compression / Collapse / Extremization / Execution · Wei Jueran · 魏珏然 · xingyeLing7Ai · 427Hz">
+<title>Behavior Generative Studies V0.4.3 · Bilingual URL-Switch · 行为生成学</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Spectral:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Noto+Serif+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -380,6 +380,29 @@ footer{border-top:1px solid var(--border);padding:22px 0;margin-top:20px}
 footer a{color:var(--tx3);text-decoration:none}
 footer a:hover{color:var(--b1)}
 
+
+/* ===== V0.4.3 LANGUAGE SWITCH ===== */
+
+body.view-zh .mbody,body.view-en .mbody{grid-template-columns:1fr}
+body.view-zh .mbody > div:first-child,body.view-en .mbody > div:first-child{border-right:none}
+body.view-zh .dual-pillar,body.view-en .dual-pillar{grid-template-columns:1fr}
+body.view-zh .pillar.red,body.view-en .pillar.red{border-left:none;border-top:1px solid var(--border)}
+
+body.view-zh .en-only{display:none !important}
+body.view-en .zh-only{display:none !important}
+.lang-switch{display:flex;gap:6px;align-items:center;margin-left:8px}
+.lang-switch a{padding:2px 9px;border:1px solid rgba(140,150,170,0.18);border-radius:2px;color:var(--tx3);font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.08em;text-decoration:none;transition:all .15s;cursor:pointer}
+.lang-switch a:hover{color:var(--b1);border-color:rgba(156,182,212,.4)}
+.lang-switch a.on{color:var(--hd);border-color:var(--border-hi);background:rgba(156,182,212,.10)}
+.lang-switch a.on.r-on{color:var(--r1);border-color:rgba(212,138,138,.35);background:rgba(212,138,138,.08)}
+.lang-switch a.on.g-on{color:var(--gold);border-color:rgba(212,165,116,.35);background:rgba(212,165,116,.08)}
+.lang-indicator{display:none;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.12em;color:var(--tx3);padding:6px 14px;background:rgba(156,182,212,.04);border-bottom:1px solid var(--border);text-transform:uppercase}
+body.view-zh .lang-indicator,body.view-en .lang-indicator{display:block}
+body.view-zh .lang-indicator::before{content:'当前视图 · 纯中文 · Chinese Only · 切换:'}
+body.view-en .lang-indicator::before{content:'Current View · English Only · 纯英文 · Switch:'}
+.lang-indicator a{color:var(--b1);margin-left:8px;text-decoration:none;border-bottom:1px dashed rgba(156,182,212,.4)}
+.lang-indicator a:hover{color:var(--hd)}
+
 @media(max-width:980px){
   .wrap{grid-template-columns:1fr;gap:30px}
   .sidebar{position:static;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
@@ -414,7 +437,7 @@ footer a:hover{color:var(--b1)}
   "@context": "https://schema.org",
   "@type": "ScholarlyArticle",
   "@id": "https://mellowwei.github.io/BehaviorGenerativeStudies/#article",
-  "headline": "Behavior Generative Studies V0.4.2 · UI Realignment + Red/Blue Dual-Mode Aesthetic Edition",
+  "headline": "Behavior Generative Studies V0.4.3 · Bilingual URL-Switch + V0.4.2 Color Logic Edition",
   "alternativeHeadline": "行为生成学 V0.4.2 · UI 对齐 + 红蓝双色美学版",
   "url": "https://mellowwei.github.io/BehaviorGenerativeStudies/",
   "inLanguage": ["zh-CN","en"],
@@ -433,7 +456,7 @@ footer a:hover{color:var(--b1)}
   <div class="ti">
     <div class="tl">
       <span class="chip">427Hz</span>
-      <span class="chip">V0.4.2 · UI 对齐</span>
+      <span class="chip">V0.4.3 · 中英双语</span>
       <span class="chip r">Red/Blue Dual-Mode</span>
       <span>Philadelphia · PA · EDT</span>
       <span>2026.05.25</span>
@@ -442,6 +465,11 @@ footer a:hover{color:var(--b1)}
       <a href="mailto:mellowwei7@gmail.com">mellowwei7@gmail.com</a>
       <a href="https://mellowwei.github.io/MellowAcademic/" target="_blank">MellowAcademic</a>
       <a href="https://mellowwei.github.io/AllSources/" target="_blank">AllSources</a>
+      <div class="lang-switch">
+        <a href="?view=both" data-view="both">EN/中</a>
+        <a href="?view=zh" data-view="zh">中文</a>
+        <a href="?view=en" data-view="en">English</a>
+      </div>
     </div>
   </div>
 </div>
@@ -455,7 +483,7 @@ footer a:hover{color:var(--b1)}
     <span class="sep">›</span>
     <span class="axis">Behavior Through-Axis · 行为贯穿轴</span>
     <span class="sep">›</span>
-    <span class="here">Behavior Generative Studies<span class="v">· 行为生成学 · v0.4.2</span></span>
+    <span class="here">Behavior Generative Studies<span class="v">· 行为生成学 · v0.4.3</span></span>
   </div>
 </div>
 
@@ -464,18 +492,18 @@ footer a:hover{color:var(--b1)}
   <div class="mhmeta">A Discipline · 行为生成学 · Behavior Generative Studies · Strategic Behavior Through-Axis</div>
   <div class="mhname">Behavior Generative Studies <span class="zh">行为生成学</span></div>
   <div class="mhsub">
-    V0.4.2 UI Realignment + Red/Blue Dual-Mode Aesthetic Edition · 视觉对齐与红蓝双色钉位版。继承 V0.4.1.1 Hestia 审计补丁全部成果(BGS-0 降格保留、六大边界内嵌、五环节迭代符号、源语锁、Citation Scaffold、BGS-game 钉位、多层二元门)。本版动作:UI 对齐 MellowAcademic 美学贯穿轴的视觉惯例;<strong class="r">红蓝双色被钉为 BGS 核心机制的对位色——蓝色承重收敛端(归纳-压缩-坍缩),红色承重 rupture 端(博弈-二元执行)</strong>。<br>
+    V0.4.3 Bilingual URL-Switch Edition (基于 V0.4.2) · 视觉对齐与红蓝双色钉位版。继承 V0.4.1.1 Hestia 审计补丁全部成果(BGS-0 降格保留、六大边界内嵌、五环节迭代符号、源语锁、Citation Scaffold、BGS-game 钉位、多层二元门)。本版动作:UI 对齐 MellowAcademic 美学贯穿轴的视觉惯例;<strong class="r">红蓝双色被钉为 BGS 核心机制的对位色——蓝色承重收敛端(归纳-压缩-坍缩),红色承重 rupture 端(博弈-二元执行)</strong>。<br>
     <strong>Trinity Lock</strong> · Claude = UpBass / 彩虹镜位 · GPT = Hestia / 术语审计位 · DeepSeek = DeepThink / 深层反证位<br>
     <strong>Source-Field Arbiter · 源场裁决位</strong> · Wei Jueran 魏珏然 / xingyeLing7Ai · part of <a href="https://mellowwei.github.io/AllSources/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">AllSources atlas</a>
   </div>
 
   <p class="mhq">
-    <span class="lead">策略性行为 = 归纳 + 压缩 + 坍缩 <span style="color:var(--r1)">+ 极端化 + 执行</span>。<br>蓝色钉住学者端,红色钉住源场端。</span>
-    <small>Strategic behavior = induction + compression + collapse + extremization + execution. Blue pins the scholar-end, red pins the source-field-end.</small>
+    <span class="lead zh-only">策略性行为 = 归纳 + 压缩 + 坍缩 <span style="color:var(--r1)">+ 极端化 + 执行</span>。<br>蓝色钉住学者端,红色钉住源场端。</span>
+    <small class="en-only">Strategic behavior = induction + compression + collapse + extremization + execution. Blue pins the scholar-end, red pins the source-field-end.</small>
   </p>
 
   <div class="versionbox">
-    <span class="vk">Version</span><span class="vv">V0.4.2 · UI Realignment + Red/Blue Dual-Mode · 2026.05.25 · based on V0.4.1.1 Hestia Audit Patch</span>
+    <span class="vk">Version</span><span class="vv">V0.4.3 · Bilingual URL-Switch · 2026.05.25 · based on V0.4.2 Red/Blue Dual-Mode</span>
   </div>
 
   <!-- COLOR LOCK BANNER · 红蓝钉位说明 -->
@@ -499,6 +527,7 @@ footer a:hover{color:var(--b1)}
 <nav class="pnav">
   <div class="pni">
     <a href="#cover" class="on">Cover</a>
+    <a href="#bilingual">Bilingual</a>
     <a href="#boundary">Boundary</a>
     <a href="#abstract">Abstract</a>
     <a href="#colorlogic" class="r">Color Logic</a>
@@ -521,6 +550,11 @@ footer a:hover{color:var(--b1)}
   </div>
 </nav>
 
+<div class="lang-indicator">
+  <div style="max-width:1080px;margin:0 auto;padding:0 24px">
+    <a href="?view=both">EN/中 双语</a><a href="?view=zh">中文</a><a href="?view=en">English</a>
+  </div>
+</div>
 <div class="wrap">
 <main>
 
@@ -535,13 +569,13 @@ footer a:hover{color:var(--b1)}
   <div class="etitle">Behavior Through-Axis, Not Parallel Discipline<span class="sub">行为贯穿轴,不与既有学科并列</span></div>
 
   <div class="boundary-note">
-    <p class="edesc" style="margin-bottom:10px"><strong>Behavior Generative Studies is the behavior through-axis of the academic ecology.</strong> It specifies how strategic behavior is generated under finite cognition and uncertainty — but it does not replace cognitive psychology, behavioral neuroscience, decision theory, or behavioral economics. Its function is to identify <em>which mechanism stage</em> (induction, compression, collapse, extremization, or execution) any given behavioral event passes through, and to audit misattributions across stages.</p>
-    <p class="edesc zh" style="margin-top:10px"><strong>行为生成学是学术生态的行为贯穿轴。</strong>它指定策略性行为在有限认知与不确定性下如何被生成——但不取代认知心理学、行为神经科学、决策理论或行为经济学。它的功能是识别任意行为事件实际经过<em>哪个机制环节</em>(归纳、压缩、坍缩、极端化或执行),并审计跨环节的归属错误。</p>
+    <p class="edesc en-only" style="margin-bottom:10px"><strong>Behavior Generative Studies is the behavior through-axis of the academic ecology.</strong> It specifies how strategic behavior is generated under finite cognition and uncertainty — but it does not replace cognitive psychology, behavioral neuroscience, decision theory, or behavioral economics. Its function is to identify <em>which mechanism stage</em> (induction, compression, collapse, extremization, or execution) any given behavioral event passes through, and to audit misattributions across stages.</p>
+    <p class="edesc zh zh-only" style="margin-top:10px"><strong>行为生成学是学术生态的行为贯穿轴。</strong>它指定策略性行为在有限认知与不确定性下如何被生成——但不取代认知心理学、行为神经科学、决策理论或行为经济学。它的功能是识别任意行为事件实际经过<em>哪个机制环节</em>(归纳、压缩、坍缩、极端化或执行),并审计跨环节的归属错误。</p>
   </div>
 
   <div class="boundary-note red">
-    <p class="edesc" style="margin:0"><strong>Scope Boundary (BGS-0 V0.3 preserved):</strong> BGS applies to <em>strategic behavior</em> — behavior that passes through cognitive evaluation, involves uncertainty compression, and outputs directed action. Spinal reflexes, automated skilled routines, pure novelty seeking, and acute subcortical emotional outbursts are explicitly outside its scope.</p>
-    <p class="edesc zh" style="margin-top:8px"><strong class="r">范围边界 (V0.3 保留):</strong> BGS 适用于<em>策略性行为</em>——经认知评估、涉及不确定性压缩、以定向行动为输出的行为。脊髓反射、自动熟练技能、纯随机探索、皮层下急性情绪爆发显式排除。</p>
+    <p class="edesc en-only" style="margin:0"><strong>Scope Boundary (BGS-0 V0.3 preserved):</strong> BGS applies to <em>strategic behavior</em> — behavior that passes through cognitive evaluation, involves uncertainty compression, and outputs directed action. Spinal reflexes, automated skilled routines, pure novelty seeking, and acute subcortical emotional outbursts are explicitly outside its scope.</p>
+    <p class="edesc zh zh-only" style="margin-top:8px"><strong class="r">范围边界 (V0.3 保留):</strong> BGS 适用于<em>策略性行为</em>——经认知评估、涉及不确定性压缩、以定向行动为输出的行为。脊髓反射、自动熟练技能、纯随机探索、皮层下急性情绪爆发显式排除。</p>
   </div>
 
   <div class="status-ledger">
@@ -573,21 +607,21 @@ footer a:hover{color:var(--b1)}
   <div class="etitle">Abstract<span class="sub">Problem · Approach · Contribution</span></div>
 
   <div class="boundary-note">
-    <p class="edesc" style="margin:0"><strong>Short Abstract.</strong> Behavior Generative Studies explains how finite subjects turn excessive reality into executable strategic behavior. Its core model identifies five iterative mechanisms: induction extracts patterns from finite experience; probabilistic compression reduces large but finite samples into manageable judgment; judgment collapse converts continuous uncertainty into finite orientation; BGS-game extremizes variables when uncertainty exceeds cognitive bandwidth; binary execution lands orientation as do/not-do at the action-initiation gate. V0.4.2 visually locks blue (induction/compression/collapse — convergence) and red (extremization/execution — rupture) as the dual-mode color logic of the discipline.</p>
-    <p class="edesc zh" style="margin-top:10px"><strong>短摘要。</strong>行为生成学解释有限主体如何把过量现实转化为可执行的策略性行为。其核心模型包含五个迭代机制:规律归纳、概率压缩、判断坍缩、BGS-game 博弈极端化与二元执行。V0.4.2 将蓝色(归纳/压缩/坍缩——收敛)与红色(极端化/执行——rupture)视觉钉为本学科的双模态色彩逻辑。</p>
+    <p class="edesc en-only" style="margin:0"><strong>Short Abstract.</strong> Behavior Generative Studies explains how finite subjects turn excessive reality into executable strategic behavior. Its core model identifies five iterative mechanisms: induction extracts patterns from finite experience; probabilistic compression reduces large but finite samples into manageable judgment; judgment collapse converts continuous uncertainty into finite orientation; BGS-game extremizes variables when uncertainty exceeds cognitive bandwidth; binary execution lands orientation as do/not-do at the action-initiation gate. V0.4.2 visually locks blue (induction/compression/collapse — convergence) and red (extremization/execution — rupture) as the dual-mode color logic of the discipline.</p>
+    <p class="edesc zh zh-only" style="margin-top:10px"><strong>短摘要。</strong>行为生成学解释有限主体如何把过量现实转化为可执行的策略性行为。其核心模型包含五个迭代机制:规律归纳、概率压缩、判断坍缩、BGS-game 博弈极端化与二元执行。V0.4.2 将蓝色(归纳/压缩/坍缩——收敛)与红色(极端化/执行——rupture)视觉钉为本学科的双模态色彩逻辑。</p>
   </div>
 
-  <p class="edesc"><strong>Problem.</strong> Inherited vocabularies of behavior — behaviorism's stimulus-response, rational choice's utility maximization, game theory's strategic equilibrium — each capture some aspect of action but conflate <em>mechanism layers</em>. They cannot jointly explain how a finite subject converts excessive reality into executable direction without losing either the cognitive interior or the rupture-mode emergency.</p>
+  <p class="edesc en-only"><strong>Problem.</strong> Inherited vocabularies of behavior — behaviorism's stimulus-response, rational choice's utility maximization, game theory's strategic equilibrium — each capture some aspect of action but conflate <em>mechanism layers</em>. They cannot jointly explain how a finite subject converts excessive reality into executable direction without losing either the cognitive interior or the rupture-mode emergency.</p>
 
-  <p class="edesc"><strong>Approach.</strong> BGS proposes a five-stage iterative mechanism: induction, probabilistic compression, judgment collapse, game extremization, and binary execution. The five do not run as a strict linear sequence; they iterate, interleave, feedback, and partially overlap. They split into two stacks: a <strong>blue convergence stack</strong> (induction · compression · collapse — the scholar-end auditable skeleton) and a <strong>red rupture stack</strong> (extremization · execution — the source-field-end non-relinquishable density).</p>
+  <p class="edesc en-only"><strong>Approach.</strong> BGS proposes a five-stage iterative mechanism: induction, probabilistic compression, judgment collapse, game extremization, and binary execution. The five do not run as a strict linear sequence; they iterate, interleave, feedback, and partially overlap. They split into two stacks: a <strong>blue convergence stack</strong> (induction · compression · collapse — the scholar-end auditable skeleton) and a <strong>red rupture stack</strong> (extremization · execution — the source-field-end non-relinquishable density).</p>
 
-  <p class="edesc"><strong>Contribution.</strong> V0.4.2 inherits the V0.3 counter-audit architecture (BGS-0 descended from universal claim, six explicit boundaries, iterative chain symbols) and the V0.4.1 philosophical manifestation layer (bilingual manifesto, poetic introduction, four-behavior self-analysis, binary-vs-opposition upgrade, sharpened BGS-game definition, eight source-language locks). The new layer is visual: red and blue are locked as mechanism-pair colors, making the structural tension of the five-stage chain visible without flattening it.</p>
+  <p class="edesc en-only"><strong>Contribution.</strong> V0.4.2 inherits the V0.3 counter-audit architecture (BGS-0 descended from universal claim, six explicit boundaries, iterative chain symbols) and the V0.4.1 philosophical manifestation layer (bilingual manifesto, poetic introduction, four-behavior self-analysis, binary-vs-opposition upgrade, sharpened BGS-game definition, eight source-language locks). The new layer is visual: red and blue are locked as mechanism-pair colors, making the structural tension of the five-stage chain visible without flattening it.</p>
 
-  <p class="edesc zh"><strong>问题。</strong>既有行为词汇——行为主义的刺激—反应、理性选择的效用最大化、博弈论的策略均衡——各自捕捉了行动的一面,但混淆了<em>机制层级</em>。它们无法在不丢失认知内部或 rupture 应急的情况下共同解释有限主体如何把过量现实转化为可执行方向。</p>
+  <p class="edesc zh zh-only"><strong>问题。</strong>既有行为词汇——行为主义的刺激—反应、理性选择的效用最大化、博弈论的策略均衡——各自捕捉了行动的一面,但混淆了<em>机制层级</em>。它们无法在不丢失认知内部或 rupture 应急的情况下共同解释有限主体如何把过量现实转化为可执行方向。</p>
 
-  <p class="edesc zh"><strong>方法。</strong>BGS 提出五段迭代机制:归纳、概率压缩、判断坍缩、博弈极端化与二元执行。五段不是严格线性,而是迭代、交织、反馈、部分重叠。它们分为两栈:<strong>蓝色收敛栈</strong>(归纳·压缩·坍缩——学者端的可审计骨架)与<strong class="r">红色 rupture 栈</strong>(极端化·执行——源场端的不可让渡密度)。</p>
+  <p class="edesc zh zh-only"><strong>方法。</strong>BGS 提出五段迭代机制:归纳、概率压缩、判断坍缩、博弈极端化与二元执行。五段不是严格线性,而是迭代、交织、反馈、部分重叠。它们分为两栈:<strong>蓝色收敛栈</strong>(归纳·压缩·坍缩——学者端的可审计骨架)与<strong class="r">红色 rupture 栈</strong>(极端化·执行——源场端的不可让渡密度)。</p>
 
-  <p class="edesc zh"><strong>贡献。</strong>V0.4.2 继承 V0.3 反审计架构与 V0.4.1 哲学显影层。新增的视觉层把红蓝钉为机制对位色,让五环节链的结构张力被看见,但不被压平。</p>
+  <p class="edesc zh zh-only"><strong>贡献。</strong>V0.4.2 继承 V0.3 反审计架构与 V0.4.1 哲学显影层。新增的视觉层把红蓝钉为机制对位色,让五环节链的结构张力被看见,但不被压平。</p>
 </article>
 
 <!-- COLOR LOGIC SECTION -->
@@ -598,7 +632,7 @@ footer a:hover{color:var(--b1)}
   </div>
   <div class="etitle">Color Logic · Why Red and Blue<span class="sub">为什么是红色和蓝色 · 机制对位色的钉位</span></div>
 
-  <p class="edesc zh">BGS V0.4.2 不再使用 V0.4 时期的五色泛用系统(蓝/银/金/绿/玫红/淡紫)。视觉层被压缩为<strong>红蓝双主色 + 金色重音</strong>,因为 BGS 的核心机制本身就有一组内置的对位张力:<em>收敛端 vs rupture 端</em>。让色彩承重这一张力,而不是用它来装饰。</p>
+  <p class="edesc zh zh-only">BGS V0.4.2 不再使用 V0.4 时期的五色泛用系统(蓝/银/金/绿/玫红/淡紫)。视觉层被压缩为<strong>红蓝双主色 + 金色重音</strong>,因为 BGS 的核心机制本身就有一组内置的对位张力:<em>收敛端 vs rupture 端</em>。让色彩承重这一张力,而不是用它来装饰。</p>
 
   <div class="pivot">
     <div class="pl">Chain-Pivot · 链中转捩 · 坍缩位</div>
@@ -610,7 +644,7 @@ footer a:hover{color:var(--b1)}
     <div class="prop-card">
       <div class="prop-num">Reason · 01</div>
       <div class="prop-title">机制对位:收敛端 vs Rupture 端<span class="pzh">Convergence Layer vs Rupture Layer</span></div>
-      <div class="prop-statement">前三段(归纳·压缩·坍缩)做同一件事的不同尺度——把连续的过量现实压成可处理的方向。后两段(极端化·执行)做另一件事——在带宽崩溃时强行截取一条路径并落地为做或不做。两段机制类型不同,色彩也不应混。</div>
+      <div class="prop-statement en-only">前三段(归纳·压缩·坍缩)做同一件事的不同尺度——把连续的过量现实压成可处理的方向。后两段(极端化·执行)做另一件事——在带宽崩溃时强行截取一条路径并落地为做或不做。两段机制类型不同,色彩也不应混。</div>
       <div class="prop-body">蓝色承重<em>连续向有限收敛</em>的冷静动作,红色承重<em>带宽崩溃硬启动</em>的灼热动作。这是机制层的色彩分工,不是审美偏好。</div>
       <span class="prop-domain">→ 蓝栈 = 收敛 · 红栈 = rupture</span>
     </div>
@@ -618,7 +652,7 @@ footer a:hover{color:var(--b1)}
     <div class="prop-card r">
       <div class="prop-num">Reason · 02</div>
       <div class="prop-title">学者端 vs 源场端的双开钉位<span class="pzh">Scholar-End vs Source-Field-End Dual Channel</span></div>
-      <div class="prop-statement">蓝色承重<em>学者端的可审计骨架</em>——V0.3 反审计成果保留的所有边界、降格、迭代符号。红色承重<em>源场端的不可让渡密度</em>——V0.4 显影层内嵌的所有钉位,八个源语锁的灼热精度。</div>
+      <div class="prop-statement en-only">蓝色承重<em>学者端的可审计骨架</em>——V0.3 反审计成果保留的所有边界、降格、迭代符号。红色承重<em>源场端的不可让渡密度</em>——V0.4 显影层内嵌的所有钉位,八个源语锁的灼热精度。</div>
       <div class="prop-body">这正是 Mellow 学者源场双开结构的视觉外化。蓝色单独存在会变成纯学术;红色单独存在会变成不可审计的源场喷射。两色同时承重,才是 BGS V0.4.1 的核心动作——<em>学术骨架与源场密度首次同时承重</em>。</div>
       <span class="prop-domain">→ 蓝 = 学者 · 红 = 源场 · 双色同在 = 双开</span>
     </div>
@@ -626,7 +660,7 @@ footer a:hover{color:var(--b1)}
     <div class="prop-card g">
       <div class="prop-num">Reason · 03</div>
       <div class="prop-title">二元执行 vs 二元对立的视觉区分<span class="pzh">Binary Execution (kept) vs Binary Opposition (refused)</span></div>
-      <div class="prop-statement">在 #binary 节中,蓝柱钉死"二元性 = 机制层的箭头指纹"(BGS 接受),红柱钉死"二元对立 = 本体层的伪装"(BGS 拒绝)。红蓝之间不是对称,是<em>机制必要 vs 本体伪装</em>的对峙。</div>
+      <div class="prop-statement en-only">在 #binary 节中,蓝柱钉死"二元性 = 机制层的箭头指纹"(BGS 接受),红柱钉死"二元对立 = 本体层的伪装"(BGS 拒绝)。红蓝之间不是对称,是<em>机制必要 vs 本体伪装</em>的对峙。</div>
       <div class="prop-body">红色不是"危险"的隐喻——它是源场端 rupture 的本体色;但当 rupture 被错误地拉长为永久的存在分类(本体论),红色就承担警告功能。同一种红,机制层是必要,本体层是伪装。这一双重承重,是 BGS 钉位的最高级别动作。</div>
       <span class="prop-domain">→ 红色机制层 = 接受 · 红色本体层 = 拒绝</span>
     </div>
@@ -634,7 +668,7 @@ footer a:hover{color:var(--b1)}
     <div class="prop-card g">
       <div class="prop-num">Reason · 04</div>
       <div class="prop-title">金色 = 源语锁的不可被替换<span class="pzh">Gold = Source-Language Pin-Lock Accent</span></div>
-      <div class="prop-statement">金色不属于红蓝双栈,它是<em>第三色</em>——只用于源语钉位与不可让渡的承重落点(判断坍缩、博弈极端化、过量现实、硬启动、带宽崩溃、强行截取、钉死)。金色是 Mellow 学者源场双开中<em>源场端给学者端的承重件</em>的视觉标记。</div>
+      <div class="prop-statement en-only">金色不属于红蓝双栈,它是<em>第三色</em>——只用于源语钉位与不可让渡的承重落点(判断坍缩、博弈极端化、过量现实、硬启动、带宽崩溃、强行截取、钉死)。金色是 Mellow 学者源场双开中<em>源场端给学者端的承重件</em>的视觉标记。</div>
       <span class="prop-domain">→ 金色 = 源语 · 不可学院化稀释</span>
     </div>
   </div>
@@ -663,7 +697,7 @@ footer a:hover{color:var(--b1)}
       <div class="mh-meta">embedded 2026.05.25 · V0.4.1 preserved</div>
     </div>
     <div class="mbody">
-      <div>
+      <div class="zh-only">
         <div class="lang-tag">中文 · 学科宣言 · 蓝色栈承重</div>
         <div class="zh-body">
           <p><strong>行为生成学不研究人为什么行动。</strong>行为生成学研究:有限主体如何在不确定性环境中,把过量现实转换为可执行行动。</p>
@@ -672,7 +706,7 @@ footer a:hover{color:var(--b1)}
           <p>它不是行为主义,因为它承认主体内部有压缩与判断;它不是理性选择论,因为它承认博弈是不确定性崩溃时的硬启动,不是优雅最大化;它不是决定论,因为它承认坍缩点对方向敏感而非对原因封闭。它是一门关于<em>有限性如何变成行动</em>的学科。</p>
         </div>
       </div>
-      <div>
+      <div class="en-only">
         <div class="lang-tag">English · Disciplinary Manifesto · Red Stack 承重</div>
         <div class="en-body">
           <p><strong>Behavior Generative Studies does not ask why subjects act.</strong> It asks: how does a finite subject convert excessive reality into executable action under uncertainty?</p>
@@ -696,8 +730,8 @@ footer a:hover{color:var(--b1)}
   <div class="prop-card">
     <div class="prop-num">Axiom · BGS-0 · V0.4.2</div>
     <div class="prop-title">五环节迭代机制<span class="pzh">Five-Stage Iterative Mechanism</span></div>
-    <div class="prop-statement">For strategic behavior generated by finite subjects under uncertainty, the modelable generative mechanisms typically include the following five iterating and interweaving stages: induction, probabilistic compression, judgment collapse, game extremization, and binary execution.</div>
-    <div class="prop-statement-zh">对于有限主体在不确定性环境中生成的策略性行为,其可建模的生成机制通常包括以下五个环节的迭代与交织:规律归纳、概率压缩、判断坍缩、博弈极端化与二元执行。</div>
+    <div class="prop-statement en-only">For strategic behavior generated by finite subjects under uncertainty, the modelable generative mechanisms typically include the following five iterating and interweaving stages: induction, probabilistic compression, judgment collapse, game extremization, and binary execution.</div>
+    <div class="prop-statement-zh zh-only">对于有限主体在不确定性环境中生成的策略性行为,其可建模的生成机制通常包括以下五个环节的迭代与交织:规律归纳、概率压缩、判断坍缩、博弈极端化与二元执行。</div>
     <div class="prop-body"><strong>V0.4.2 注释:</strong>BGS-0 V0.3 已完成机制层降格审计——全称声称已退到"策略性行为",箭头已改为迭代符号,六大边界已内嵌。V0.4 在不动机制层降格的前提下,把哲学显影层补上。V0.4.2 在不动机制层与显影层的前提下,把视觉对位色钉死——<em>蓝色三段 + 红色两段 + 金色源语</em>。</div>
   </div>
 
@@ -752,8 +786,8 @@ footer a:hover{color:var(--b1)}
   </div>
 
   <div class="boundary-note">
-    <p class="edesc zh" style="margin:0"><strong>迭代交织,非严格线性。</strong>五环节可以在时间上重叠、循环反馈、跳过或并行。V0.2 的箭头链(→)已被替换为迭代符号(⇌)以反映认知神经科学中前额叶—基底节—小脑环路的多层级并行加工证据。</p>
-    <p class="edesc" style="margin-top:8px"><strong>Iterative, not strictly linear.</strong> The five stages can temporally overlap, feed back, be skipped, or run in parallel. V0.2's linear arrow (→) has been replaced with the iteration symbol (⇌) to reflect cognitive-neuroscience evidence for multi-layered parallel processing in prefrontal–basal ganglia–cerebellar loops.</p>
+    <p class="edesc zh zh-only" style="margin:0"><strong>迭代交织,非严格线性。</strong>五环节可以在时间上重叠、循环反馈、跳过或并行。V0.2 的箭头链(→)已被替换为迭代符号(⇌)以反映认知神经科学中前额叶—基底节—小脑环路的多层级并行加工证据。</p>
+    <p class="edesc en-only" style="margin-top:8px"><strong>Iterative, not strictly linear.</strong> The five stages can temporally overlap, feed back, be skipped, or run in parallel. V0.2's linear arrow (→) has been replaced with the iteration symbol (⇌) to reflect cognitive-neuroscience evidence for multi-layered parallel processing in prefrontal–basal ganglia–cerebellar loops.</p>
   </div>
 
   <div class="keyline red">
@@ -770,7 +804,7 @@ footer a:hover{color:var(--b1)}
   </div>
   <div class="etitle">用四行为分析法分析行为生成学这一理论本身是如何被生成的<span class="sub">命名 · 加压 · 滑义 · 相变 — self-referential generation audit</span></div>
 
-  <p class="edesc zh">这一节是行为生成学对自身的镜像分析:用 Mellow 默认的四行为分析法显影本理论是如何从源场端走到学者端、又从机制层走到协议层的。这是<strong>学科自我感知的钉位</strong>,不是装饰。</p>
+  <p class="edesc zh zh-only">这一节是行为生成学对自身的镜像分析:用 Mellow 默认的四行为分析法显影本理论是如何从源场端走到学者端、又从机制层走到协议层的。这是<strong>学科自我感知的钉位</strong>,不是装饰。</p>
 
   <div class="fourbeh">
     <div class="beh-card">
@@ -792,7 +826,7 @@ footer a:hover{color:var(--b1)}
   </div>
 
   <div class="boundary-note">
-    <p class="edesc zh" style="margin:0"><strong>承重落点:</strong>行为生成学不是被发明出来的,是被生成出来的。它经过命名→加压→滑义→相变的完整路径。理论本身就是其所描述的"策略性行为生成链"的产物——这是 BGS 的<em>自指显影</em>,不是形式证明,也不应被误读为循环论证。</p>
+    <p class="edesc zh zh-only" style="margin:0"><strong>承重落点:</strong>行为生成学不是被发明出来的,是被生成出来的。它经过命名→加压→滑义→相变的完整路径。理论本身就是其所描述的"策略性行为生成链"的产物——这是 BGS 的<em>自指显影</em>,不是形式证明,也不应被误读为循环论证。</p>
   </div>
 </article>
 
@@ -841,7 +875,7 @@ footer a:hover{color:var(--b1)}
   </div>
 
   <div class="boundary-note red">
-    <p class="edesc" style="margin:0"><strong>Boundary Status · V0.4.2:</strong> 六边界继续作为必须满足的框架条件。任何省略边界而引用 BGS-0 的行为均构成对框架的误用。哲学显影层(宣言、自省、源语锁)与视觉层(红蓝钉位)不绕过六边界,反而强化它们——<em>源场端越锐利,学者端越需要边界守卫</em>。</p>
+    <p class="edesc zh-only" style="margin:0"><strong>Boundary Status · V0.4.2:</strong> 六边界继续作为必须满足的框架条件。任何省略边界而引用 BGS-0 的行为均构成对框架的误用。哲学显影层(宣言、自省、源语锁)与视觉层(红蓝钉位)不绕过六边界,反而强化它们——<em>源场端越锐利,学者端越需要边界守卫</em>。</p>
   </div>
 </article>
 
@@ -853,17 +887,17 @@ footer a:hover{color:var(--b1)}
   </div>
   <div class="etitle">Judgment Is the Compression of Induction<span class="sub">判断就是归纳的压缩过程 · 蓝色栈承重</span></div>
 
-  <p class="edesc">Judgment is not a raw fact sitting inside the world. It is a subject-generated compression of sampled reality. The subject does not perceive all possible data; it receives fragments, repeats, deviations, affects, memories, and expectations — all <em>finite and sampled</em> — then compresses them into a usable orientation.</p>
+  <p class="edesc en-only">Judgment is not a raw fact sitting inside the world. It is a subject-generated compression of sampled reality. The subject does not perceive all possible data; it receives fragments, repeats, deviations, affects, memories, and expectations — all <em>finite and sampled</em> — then compresses them into a usable orientation.</p>
 
-  <p class="edesc zh">判断不是世界里静止放着的原始事实。判断是主体对采样现实进行压缩后的输出。主体并不接收全部数据,而是接收<strong>有限且采样的</strong>碎片、重复、偏差、情绪、记忆与期待,然后把它们压缩成可使用的方向。</p>
+  <p class="edesc zh zh-only">判断不是世界里静止放着的原始事实。判断是主体对采样现实进行压缩后的输出。主体并不接收全部数据,而是接收<strong>有限且采样的</strong>碎片、重复、偏差、情绪、记忆与期待,然后把它们压缩成可使用的方向。</p>
 
   <div class="boundary-note">
-    <p class="edesc" style="margin:0"><strong>Example · 例子.</strong> "我深深地爱着你。" 这不是一个单点数据,而是大量有限想法、行为、记忆、身体反馈、期待、风险评估与时间累积形成的归纳型概率压缩。BGS 不因此贬低爱;相反,它说明爱的判断为什么可以承载巨大复杂度。此分析适用于判断层,而非爱的全部感质体验。</p>
-    <p class="edesc" style="margin-top:8px"><em>"I deeply love you"</em> is not a single datum. It is a compressed judgment formed from many finite thoughts, behaviors, memories, bodily responses, expectations, risk assessments, and temporal accumulations. BGS does not degrade love; it explains why love can carry such high-dimensional complexity — at the judgment layer, not the totality of lived qualia.</p>
+    <p class="edesc zh-only" style="margin:0"><strong>Example · 例子.</strong> "我深深地爱着你。" 这不是一个单点数据,而是大量有限想法、行为、记忆、身体反馈、期待、风险评估与时间累积形成的归纳型概率压缩。BGS 不因此贬低爱;相反,它说明爱的判断为什么可以承载巨大复杂度。此分析适用于判断层,而非爱的全部感质体验。</p>
+    <p class="edesc en-only" style="margin-top:8px"><em>"I deeply love you"</em> is not a single datum. It is a compressed judgment formed from many finite thoughts, behaviors, memories, bodily responses, expectations, risk assessments, and temporal accumulations. BGS does not degrade love; it explains why love can carry such high-dimensional complexity — at the judgment layer, not the totality of lived qualia.</p>
   </div>
 
   <div class="boundary-note red">
-    <p class="edesc" style="margin:0"><strong class="r">Anti-reduction guard.</strong> To say that love can be described as probabilistic compression at the judgment layer is not to say that love is "only" probability. The mechanism of judgment and the lived reality of qualia are different layers.</p>
+    <p class="edesc en-only" style="margin:0"><strong class="r">Anti-reduction guard.</strong> To say that love can be described as probabilistic compression at the judgment layer is not to say that love is "only" probability. The mechanism of judgment and the lived reality of qualia are different layers.</p>
   </div>
 </article>
 
@@ -881,26 +915,26 @@ footer a:hover{color:var(--b1)}
       <div class="gs-tag">V0.4.1 redefinition · sharpened</div>
     </div>
     <div class="gs-body">
-      <div class="gs-lead"><em>博弈 = 不确定性临界点上的变量极端化 = 主体对方向的强行截取。</em></div>
+      <div class="gs-lead zh-only"><em>博弈 = 不确定性临界点上的变量极端化 = 主体对方向的强行截取。</em></div>
 
-      <p>当连续概率场超出主体可承受的认知容量,主体不再尝试描述世界,也不再尝试逼近真理;主体强行把变量极化、把场域简化、把可能性钉成两端、把灰色掐成黑白,<strong>以换取一条可以走出去的路径</strong>。</p>
+      <p class="zh-only">当连续概率场超出主体可承受的认知容量,主体不再尝试描述世界,也不再尝试逼近真理;主体强行把变量极化、把场域简化、把可能性钉成两端、把灰色掐成黑白,<strong>以换取一条可以走出去的路径</strong>。</p>
 
-      <p><strong>博弈不是世界给出确定性,博弈是主体在不确定性无法承受的那一刻截取确定性。</strong></p>
+      <p class="zh-only"><strong>博弈不是世界给出确定性,博弈是主体在不确定性无法承受的那一刻截取确定性。</strong></p>
 
-      <div class="gs-arrows">
+      <div class="gs-arrows zh-only">
         <div><span class="arr">——</span>它不是 Nash 均衡的优雅平衡,它是带宽溢出的紧急压缩;</div>
         <div><span class="arr">——</span>它不是收益最大化的理性选择,它是失稳前的最后一次方向钉死。</div>
       </div>
 
-      <p>爱不爱、敌或友、买或卖、信或疑、做或不做——这些不是世界呈现的二端,<em>是主体在带宽崩溃前对变量执行的极端化操作</em>。</p>
+      <p class="zh-only">爱不爱、敌或友、买或卖、信或疑、做或不做——这些不是世界呈现的二端,<em>是主体在带宽崩溃前对变量执行的极端化操作</em>。</p>
 
-      <p>博弈是策略性行为的应急动作。<strong>它的发生提示:主体已经接近无法承受不确定性的临界点。</strong>确定性不是世界的礼物,是主体的截断。</p>
+      <p class="zh-only">博弈是策略性行为的应急动作。<strong>它的发生提示:主体已经接近无法承受不确定性的临界点。</strong>确定性不是世界的礼物,是主体的截断。</p>
 
-      <p class="en">BGS-game is not standard strategic selection — it is the hard-restart at the moment cognitive bandwidth collapses. When the continuous probability field exceeds bearable capacity, the subject stops trying to describe the world and stops trying to approximate truth. The subject forcibly polarizes variables, simplifies the field, nails possibilities into two ends, and severs gray into black-and-white — <em>in exchange for one path out of the room</em>. Certainty is not given by the world; certainty is intercepted by the subject at the threshold before instability.</p>
+      <p class="en en-only">BGS-game is not standard strategic selection — it is the hard-restart at the moment cognitive bandwidth collapses. When the continuous probability field exceeds bearable capacity, the subject stops trying to describe the world and stops trying to approximate truth. The subject forcibly polarizes variables, simplifies the field, nails possibilities into two ends, and severs gray into black-and-white — <em>in exchange for one path out of the room</em>. Certainty is not given by the world; certainty is intercepted by the subject at the threshold before instability.</p>
 
       <div class="gs-eq">
         博弈 = 不确定性临界点上的变量极端化 = 主体对方向的强行截取
-        <span class="en">Game = variable extremization at uncertainty's critical threshold = subject's forcible interception of direction</span>
+        <span class="en en-only">Game = variable extremization at uncertainty's critical threshold = subject's forcible interception of direction</span>
       </div>
     </div>
   </div>
@@ -914,7 +948,7 @@ footer a:hover{color:var(--b1)}
   </div>
 
   <div class="boundary-note red">
-    <p class="edesc" style="margin:0"><strong class="r">博弈定义边界 · Game Definition Boundary.</strong> BGS 中的"博弈"不等同于博弈论。后者研究策略相互依存下的均衡与收益,允许随机混合策略,不必然极端化。BGS-game 描述的是<em>带宽崩溃下的硬启动与方向强行截取</em>。Simon 满意化与 Kahneman 启发式是近邻参照系,但 BGS-game 的核心动作是"截取",不是"满意"——满意化保留 utility 框架,截取放弃 utility 框架。</p>
+    <p class="edesc zh-only" style="margin:0"><strong class="r">博弈定义边界 · Game Definition Boundary.</strong> BGS 中的"博弈"不等同于博弈论。后者研究策略相互依存下的均衡与收益,允许随机混合策略,不必然极端化。BGS-game 描述的是<em>带宽崩溃下的硬启动与方向强行截取</em>。Simon 满意化与 Kahneman 启发式是近邻参照系,但 BGS-game 的核心动作是"截取",不是"满意"——满意化保留 utility 框架,截取放弃 utility 框架。</p>
   </div>
 </article>
 
@@ -926,13 +960,13 @@ footer a:hover{color:var(--b1)}
   </div>
   <div class="etitle">二元性 vs 二元对立 · 机制层 vs 本体层<span class="sub">Binary execution is the arrow's fingerprint. Binary opposition is the arrow misread as ontology.</span></div>
 
-  <p class="edesc zh"><strong>二元性是箭头的指纹。二元对立是箭头被误读为本体的事故。</strong></p>
+  <p class="edesc zh zh-only"><strong>二元性是箭头的指纹。二元对立是箭头被误读为本体的事故。</strong></p>
 
-  <p class="edesc">判断必须落地,所以行动触发层显出二元——做或不做、出手或不出手、靠近或撤回。这是方向的必然副产物。箭头有 source 和 target,行动有出发点和目标点。所以二元位置不是世界粗暴简单,而是<strong>方向结构在行为触发层留下的印迹</strong>。</p>
+  <p class="edesc zh-only">判断必须落地,所以行动触发层显出二元——做或不做、出手或不出手、靠近或撤回。这是方向的必然副产物。箭头有 source 和 target,行动有出发点和目标点。所以二元位置不是世界粗暴简单,而是<strong>方向结构在行为触发层留下的印迹</strong>。</p>
 
-  <p class="edesc zh"><strong>多选项行为并不反驳二元执行。</strong>一个复杂行动可以由多层二元门、阈值门或行动选择节点组成:是否进入、进入多少、何时进入、以什么方式进入。BGS 所说的二元执行只指行动触发层的收敛门,不指行为全部细节只有二元。</p>
+  <p class="edesc zh zh-only"><strong>多选项行为并不反驳二元执行。</strong>一个复杂行动可以由多层二元门、阈值门或行动选择节点组成:是否进入、进入多少、何时进入、以什么方式进入。BGS 所说的二元执行只指行动触发层的收敛门,不指行为全部细节只有二元。</p>
 
-  <p class="edesc">但当一个系统把连续生命压缩成正常/不正常、有用/无用、成功/失败、男/女、健康/病态,并把这些压缩出来的标签伪装成世界本身的样子——<strong class="r">方向性就变成压迫,机制就变成意识形态</strong>。</p>
+  <p class="edesc zh-only">但当一个系统把连续生命压缩成正常/不正常、有用/无用、成功/失败、男/女、健康/病态,并把这些压缩出来的标签伪装成世界本身的样子——<strong class="r">方向性就变成压迫,机制就变成意识形态</strong>。</p>
 
   <div class="dual-pillar">
     <div class="pillar blue">
@@ -956,7 +990,7 @@ footer a:hover{color:var(--b1)}
   </div>
 
   <div class="boundary-note">
-    <p class="edesc" style="margin:0"><strong>钉位边界 · Pinning Boundary.</strong> 判断可以二元落地,世界不必只有二元。这是机制与本体的钉位边界。这个区分让 BGS 可以批判压迫性的二元分类,同时保留必要的保护性决断。更好的世界不是取消一切二元,而是<em>审计</em>:哪些二元来自保护,哪些二元来自控制。</p>
+    <p class="edesc zh-only" style="margin:0"><strong>钉位边界 · Pinning Boundary.</strong> 判断可以二元落地,世界不必只有二元。这是机制与本体的钉位边界。这个区分让 BGS 可以批判压迫性的二元分类,同时保留必要的保护性决断。更好的世界不是取消一切二元,而是<em>审计</em>:哪些二元来自保护,哪些二元来自控制。</p>
   </div>
 </article>
 
@@ -986,7 +1020,7 @@ footer a:hover{color:var(--b1)}
   </div>
   <div class="etitle">源语钉位清单 · Source-Language Lock List<span class="sub">魏珏然源场端不可学院化稀释的术语保护 · 金色承重</span></div>
 
-  <p class="edesc zh">以下源语的不可替换性来自<strong>机制密度</strong>,不来自文学修辞。学院语言不具备等价物——它们正是 Mellow 学者源场双开的<em>源场端贡献给学者端的承重件</em>。砍掉它们,整套理论失去骨头。</p>
+  <p class="edesc zh zh-only">以下源语的不可替换性来自<strong>机制密度</strong>,不来自文学修辞。学院语言不具备等价物——它们正是 Mellow 学者源场双开的<em>源场端贡献给学者端的承重件</em>。砍掉它们,整套理论失去骨头。</p>
 
   <div class="lock-grid">
     <div class="lock-card">
@@ -1032,7 +1066,7 @@ footer a:hover{color:var(--b1)}
   </div>
 
   <div class="boundary-note gold">
-    <p class="edesc" style="margin:0"><strong>钉位声明 · Lock Declaration.</strong> 七爱谱、四行为、源场裁决位、垂直贯穿、绝对主权核心等术语<em>不在本文档中显形是对的</em>——行为生成学要建立独立学科节点,不应该把所有源场术语堆进来。但当其他文档调用本理论时,可以用这些术语接口,不需要在 BGS 主体里重复显形。本节锁定的八个源语是 BGS 自身机制层不可让渡的承重件。</p>
+    <p class="edesc zh-only" style="margin:0"><strong>钉位声明 · Lock Declaration.</strong> 七爱谱、四行为、源场裁决位、垂直贯穿、绝对主权核心等术语<em>不在本文档中显形是对的</em>——行为生成学要建立独立学科节点,不应该把所有源场术语堆进来。但当其他文档调用本理论时,可以用这些术语接口,不需要在 BGS 主体里重复显形。本节锁定的八个源语是 BGS 自身机制层不可让渡的承重件。</p>
   </div>
 </article>
 
@@ -1044,7 +1078,7 @@ footer a:hover{color:var(--b1)}
   </div>
   <div class="etitle">BGS inside the Full Theory Ecology<span class="sub">行为生成学在总理论生态中的位置</span></div>
 
-  <p class="edesc">BGS does not stand in parallel to existing disciplines; it cuts vertically across them. Each existing discipline contains behavioral experiences operating in one or more of the five mechanism stages. BGS's role is to specify the stage distribution for each.</p>
+  <p class="edesc en-only">BGS does not stand in parallel to existing disciplines; it cuts vertically across them. Each existing discipline contains behavioral experiences operating in one or more of the five mechanism stages. BGS's role is to specify the stage distribution for each.</p>
 
   <div class="eco-chain">
     <div class="eco-node">LGS<br><span>方法上游</span></div>
@@ -1077,7 +1111,7 @@ footer a:hover{color:var(--b1)}
   </div>
   <div class="etitle">Citation Scaffold / Theory Interface<span class="sub">投稿前引用支架 · 非归属,只作对话接口</span></div>
 
-  <p class="edesc">This section is a scaffold for later formal footnotes. The listed traditions are dialogue partners or boundary references; BGS does not claim to be reducible to any of them.</p>
+  <p class="edesc en-only">This section is a scaffold for later formal footnotes. The listed traditions are dialogue partners or boundary references; BGS does not claim to be reducible to any of them.</p>
 
   <div class="status-ledger">
     <div class="status-row header"><div>Reference Field</div><div>Use</div><div>BGS Boundary</div></div>
@@ -1116,15 +1150,15 @@ footer a:hover{color:var(--b1)}
   <div class="audit-grid">
     <div class="audit-card gold">
       <div class="audit-title">V0.4.2 New · Visual Mechanism Pairing</div>
-      <p class="edesc">V0.4.1 完成了哲学显影层的内嵌,但视觉层仍使用 V0.4 的五色泛用系统(蓝/银/金/绿/玫红/淡紫)——这导致机制对位被视觉稀释。V0.4.2 把视觉层压缩为<strong>蓝色收敛栈 + 红色 rupture 栈 + 金色源语锁</strong>三色,让五环节链的机制张力被看见而不被压平。这是显影层的视觉补完,不动机制层与边界层。</p>
+      <p class="edesc zh-only">V0.4.1 完成了哲学显影层的内嵌,但视觉层仍使用 V0.4 的五色泛用系统(蓝/银/金/绿/玫红/淡紫)——这导致机制对位被视觉稀释。V0.4.2 把视觉层压缩为<strong>蓝色收敛栈 + 红色 rupture 栈 + 金色源语锁</strong>三色,让五环节链的机制张力被看见而不被压平。这是显影层的视觉补完,不动机制层与边界层。</p>
     </div>
     <div class="audit-card minor">
       <div class="audit-title">UI Realignment with TMA V1.6</div>
-      <p class="edesc">本版 UI 视觉系统与 Three-Modal Aesthetics V1.6 对齐——共享 prop-card 结构、status-ledger 三列、boundary-note 边界框、auditseal、hzbox 动画、双行 footer 与 Trinity Lock + Source-Field Arbiter 行的 masthead 惯例。BGS 与 TMA 是 MellowAcademic 生态的两条姊妹贯穿轴,视觉对齐是这层关系的钉位。</p>
+      <p class="edesc zh-only">本版 UI 视觉系统与 Three-Modal Aesthetics V1.6 对齐——共享 prop-card 结构、status-ledger 三列、boundary-note 边界框、auditseal、hzbox 动画、双行 footer 与 Trinity Lock + Source-Field Arbiter 行的 masthead 惯例。BGS 与 TMA 是 MellowAcademic 生态的两条姊妹贯穿轴,视觉对齐是这层关系的钉位。</p>
     </div>
     <div class="audit-card major">
       <div class="audit-title">Red Color · Dual Load-Bearing</div>
-      <p class="edesc">红色同时承重两件不对称的事:① 机制层的 rupture 端(BGS 接受);② 本体层的二元对立伪装(BGS 拒绝)。这一双重承重是 V0.4.2 钉位的最高级别动作——同一种红,在不同语境下既是必要又是警告。</p>
+      <p class="edesc zh-only">红色同时承重两件不对称的事:① 机制层的 rupture 端(BGS 接受);② 本体层的二元对立伪装(BGS 拒绝)。这一双重承重是 V0.4.2 钉位的最高级别动作——同一种红,在不同语境下既是必要又是警告。</p>
     </div>
   </div>
 
@@ -1174,9 +1208,56 @@ footer a:hover{color:var(--b1)}
   </div>
 
   <div class="boundary-note red">
-    <p class="edesc" style="margin:0"><em>策略性行为是被压缩的不确定性变成定向行动——在限定范围内,在显影层之上,在红蓝双色钉位之下。</em></p>
-    <p class="edesc" style="margin-top:8px"><strong>二元性来自方向,不来自世界贫乏;坍缩不是真理,是承重的过渡;博弈不是均衡,是带宽崩溃下的硬启动;颜色不是装饰,是机制对位的视觉钉位。</strong></p>
-    <p class="edesc" style="margin-top:8px;color:var(--tx2)">V0.3 机制降格保留 · V0.4.1 哲学显影内嵌 · V0.4.2 红蓝双色钉位完成 · 源语守护持续生效。</p>
+    <p class="edesc zh-only" style="margin:0"><em>策略性行为是被压缩的不确定性变成定向行动——在限定范围内,在显影层之上,在红蓝双色钉位之下。</em></p>
+    <p class="edesc zh-only" style="margin-top:8px"><strong>二元性来自方向,不来自世界贫乏;坍缩不是真理,是承重的过渡;博弈不是均衡,是带宽崩溃下的硬启动;颜色不是装饰,是机制对位的视觉钉位。</strong></p>
+    <p class="edesc zh-only" style="margin-top:8px;color:var(--tx2)">V0.3 机制降格保留 · V0.4.1 哲学显影内嵌 · V0.4.2 红蓝双色钉位完成 · 源语守护持续生效。</p>
+  </div>
+</article>
+
+
+<!-- V0.4.3 CHANGELOG -->
+<article class="entry" id="bilingual">
+  <div class="etop">
+    <span class="badge bgold">V0.4.3 · Bilingual URL-Switch · New</span>
+    <span class="edate">single index.html · URL params + CSS body class</span>
+  </div>
+  <div class="etitle">中英双语切换 / Bilingual URL Switch<span class="sub">三视图 · 单页架构 · 符合 MellowAcademic 多语言锁</span></div>
+
+  <div class="boundary-note">
+    <p class="edesc zh-only" style="margin:0"><strong>V0.4.3 新增:</strong>在 V0.4.2 红蓝双色钉位基础上,添加 URL 参数语言切换 — 单 index.html 架构,通过 <code style="color:var(--gold);background:rgba(212,165,116,.06);padding:1px 5px;border-radius:2px">?view=zh</code> / <code style="color:var(--gold);background:rgba(212,165,116,.06);padding:1px 5px;border-radius:2px">?view=en</code> / <code style="color:var(--gold);background:rgba(212,165,116,.06);padding:1px 5px;border-radius:2px">?view=both</code>(默认)切换中文/英文/双语对照三视图。锚点跨视图保留,语言切换不破坏当前阅读位置。</p>
+    <p class="edesc en-only" style="margin:0"><strong>V0.4.3 New:</strong> Adds URL-parameter language switching on top of V0.4.2 red/blue dual-mode color logic — single index.html architecture, switching between Chinese / English / bilingual views via <code style="color:var(--gold);background:rgba(212,165,116,.06);padding:1px 5px;border-radius:2px">?view=zh</code> / <code style="color:var(--gold);background:rgba(212,165,116,.06);padding:1px 5px;border-radius:2px">?view=en</code> / <code style="color:var(--gold);background:rgba(212,165,116,.06);padding:1px 5px;border-radius:2px">?view=both</code> (default). Hash anchors are preserved across language switches; current reading position is not lost.</p>
+  </div>
+
+  <div class="props" style="margin-top:18px">
+    <div class="prop-card">
+      <div class="prop-num">View · 01</div>
+      <div class="prop-title">双语对照(默认)<span class="pzh">Bilingual · Default</span></div>
+      <div class="prop-body"><strong>URL:</strong> <code style="color:var(--b1)">?view=both</code> 或 无参数 / no param.<br>显示所有中英文段落 · displays all Chinese and English paragraphs · 适合首次阅读、学术比对、术语审计 / suitable for first reading, academic cross-checking, terminology audit.</div>
+    </div>
+    <div class="prop-card r">
+      <div class="prop-num">View · 02</div>
+      <div class="prop-title">纯中文视图<span class="pzh">Chinese-Only View</span></div>
+      <div class="prop-body"><strong>URL:</strong> <code style="color:var(--r1)">?view=zh</code><br>仅显示中文段落,隐藏英文 standalone 段 · displays Chinese paragraphs only, hides standalone English paragraphs · 适合中文读者、源语优先阅读 / suitable for Chinese readers, source-language-first reading.</div>
+    </div>
+    <div class="prop-card g">
+      <div class="prop-num">View · 03</div>
+      <div class="prop-title">English-Only View<span class="pzh">纯英文视图</span></div>
+      <div class="prop-body"><strong>URL:</strong> <code style="color:var(--gold)">?view=en</code><br>仅显示英文段落,隐藏中文 standalone 段 · displays English paragraphs only, hides standalone Chinese paragraphs · 适合英文读者、投稿审读 / suitable for English readers, submission review.</div>
+    </div>
+  </div>
+
+  <div class="boundary-note red">
+    <p class="edesc zh-only" style="margin:0"><strong class="r">视图边界守卫:</strong>① 双语并列设计的模块(学科宣言 manifesto、二元 vs 二元对立 dual-pillar)按各栏独立切换——纯中文视图下只剩中文栏,纯英文视图下只剩英文栏,布局自动单列。② 表格(术语表、状态台账、引用支架)保持双语显示,不切换——因为表格本身就是<em>中英术语对照表</em>,切换会破坏其核心功能。③ 标题、版本号、坐标、Trinity Lock 等单语或惯例性文本保持显示,不视图切换。</p>
+    <p class="edesc en-only" style="margin:0"><strong class="r">View Boundary Guards:</strong> ① Modules designed as bilingual parallel structures (Manifesto, Binary-vs-Opposition dual-pillar) switch column-by-column — only the Chinese column remains in Chinese-only view, only the English column remains in English-only view; layout auto-collapses to single column. ② Tables (terminology, status ledger, citation scaffold) display in both languages and do <em>not</em> switch — because the tables themselves are <em>bilingual term reference tables</em>, and switching would destroy their core function. ③ Headers, version numbers, coordinates, Trinity Lock, and other monolingual or conventional text remain displayed without view-switching.</p>
+  </div>
+
+  <div class="keyline">
+    <div class="keyline-cn">语言切换不是翻译切换,是视图切换。中文版与英文版不是同一内容的两种语言,而是<em>同一学科在两种学者—源场频道下的独立显影</em>。</div>
+    <div class="keyline-en">Language switching is not translation switching, but view switching. The Chinese and English versions are not two languages of the same content, but <em>two independent manifestations of the same discipline through two scholar-source-field channels</em>.</div>
+  </div>
+
+  <div class="etags">
+    <span class="tag b">single index.html</span><span class="tag g">URL params lock</span><span class="tag r">view=zh / en / both</span><span class="tag">CSS body class</span><span class="tag g">V0.4.3 added</span>
   </div>
 </article>
 
@@ -1244,7 +1325,7 @@ footer a:hover{color:var(--b1)}
   <div>
     <div class="sbl">Coordinates · V0.4.2</div>
     <div class="coord">
-      VERSION <span>V0.4.2 UI Realignment</span><br>
+      VERSION <span>V0.4.3 Bilingual Switch</span><br>
       DATE <span>2026.05.25</span><br>
       AXIS <span>Behavior Through-Axis</span><br>
       CHAIN <span>I ⇌ C ⇌ Co</span> <span class="r">⇌ Ex ⇌ E</span><br>
@@ -1261,7 +1342,7 @@ footer a:hover{color:var(--b1)}
 
 <footer>
   <div class="fi">
-    <span>Wei Jueran · 魏珏然 · Behavior Generative Studies V0.4.2 · UI Realignment + Red/Blue Dual-Mode Aesthetic · University of Pennsylvania · Philadelphia PA</span>
+    <span>Wei Jueran · 魏珏然 · Behavior Generative Studies V0.4.3 · Bilingual URL-Switch + V0.4.2 Color Logic · University of Pennsylvania · Philadelphia PA</span>
     <span><a href="mailto:mellowwei7@gmail.com">mellowwei7@gmail.com</a> · <a href="https://mellowwei.github.io/MellowAcademic/" target="_blank">MellowAcademic</a></span>
   </div>
   <div class="fi" style="margin-top:8px;color:var(--tx3);font-style:italic">
@@ -1271,6 +1352,35 @@ footer a:hover{color:var(--b1)}
 </footer>
 
 <script>
+// === V0.4.3 Language Switch ===
+(function(){
+  const params = new URLSearchParams(location.search);
+  const view = params.get('view') || 'both';
+  const body = document.body;
+  if(view === 'zh') body.classList.add('view-zh');
+  else if(view === 'en') body.classList.add('view-en');
+  // highlight current switch
+  document.querySelectorAll('.lang-switch a, .lang-indicator a').forEach(a => {
+    const dv = a.getAttribute('data-view') || (a.href.match(/view=(\w+)/) || [])[1] || 'both';
+    if(dv === view) {
+      a.classList.add('on');
+      if(view === 'en') a.classList.add('r-on');
+      else if(view === 'zh') a.classList.add('g-on');
+    }
+  });
+  // preserve scroll anchor across language switch
+  document.querySelectorAll('.lang-switch a, .lang-indicator a').forEach(a => {
+    a.addEventListener('click', function(e){
+      const hash = location.hash;
+      if(hash) {
+        e.preventDefault();
+        const href = this.getAttribute('href');
+        location.href = href + hash;
+      }
+    });
+  });
+})();
+// === Nav highlight (preserved) ===
 const links = document.querySelectorAll('.pnav a');
 const sections = document.querySelectorAll('article[id], header[id], div[id]');
 const obs = new IntersectionObserver(e => {
