@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="行为生成学 · Behavior Generative Studies · V0.4.1.1 Hestia Audit Patch · Philosophical Manifestation Edition · Induction · Probabilistic Compression · Judgment Collapse · Game Extremization · Binary Execution · Bandwidth Collapse · Hard Restart · Wei Jueran · 魏珏然 · xingyeLing7Ai · 427Hz" />
+<title>行为生成学 · Behavior Generative Studies · V0.4.1.1 Hestia Audit Patch · Philosophical Manifestation Edition</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Noto+Serif+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "@id": "https://mellowwei.github.io/BehaviorGenerativeStudies/#article",
+  "headline": "Behavior Generative Studies V0.4.1.1: Hestia Audit Patch · Philosophical Manifestation Edition",
+  "alternativeHeadline": "行为生成学 V0.4.1.1：Hestia 审计补丁 · 哲学显影版",
+  "author": {"@type":"Person","name":"Wei Jueran","alternateName":["魏珏然","Mellow Wei","xingyeLing7Ai"]},
+  "inLanguage": ["zh-CN","en"],
+  "dateCreated": "2026-05-25",
+  "dateModified": "2026-05-25",
+  "version": "V0.4.1.1 Hestia Audit Patch · Philosophical Manifestation Edition",
+  "keywords": "Behavior Generative Studies, 行为生成学, induction, probabilistic compression, judgment collapse, game extremization, binary execution, bandwidth collapse, hard restart, Wei Jueran",
+  "isPartOf": {"@type":"CreativeWork","name":"AllSources / MellowAcademic / Logic Generative Studies / Qualia-Rhythm Matrix"}
+}
+</script>
+<style>
+:root{
+    --bg:#050507;
+    --bg2:#0b0b10;
+    --bg3:#14141a;
+    --bg4:#1a1a22;
+    --panel:#101018;
+    --border:rgba(255,255,255,0.11);
+    --border-hi:rgba(255,255,255,0.34);
+    --a1:#ffffff;
+    --a2:#d5d5df;
+    --a3:#a0a0ad;
+    --a4:#6f6f7a;
+    --tx:#e1e1e8;
+    --tx2:#aaaab6;
+    --tx3:#595965;
+    --hd:#ffffff;
+    --logicblue:#5a8db8;
+    --patternsilver:#b8b8c8;
+    --warn:#e6c576;
+    --rose:#ff8aa8;
+    --green:#8ee6bd;
+    --lav:#b8a8d8;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+    background:
+        radial-gradient(circle at 18% 0%,rgba(90,141,184,.12),transparent 28%),
+        radial-gradient(circle at 90% 8%,rgba(142,230,189,.055),transparent 28%),
+        radial-gradient(circle at 55% 100%,rgba(255,138,168,.045),transparent 30%),
+        radial-gradient(circle at 30% 65%,rgba(184,168,216,.04),transparent 25%),
+        var(--bg);
+    color:var(--tx);
+    font-family:'DM Sans','Noto Serif SC',sans-serif;
+    font-size:15px;
+    line-height:1.72;
+    min-height:100vh;
+}
+body:after{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.026) 3px,rgba(0,0,0,.026) 4px);pointer-events:none;z-index:9999}
+
+/* Starfield */
+.stars{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.stars canvas{width:100%;height:100%;display:block;opacity:.35}
+
+a{color:inherit}
+.topbar{background:rgba(5,5,7,.96);border-bottom:1px solid var(--border);padding:6px 0;position:relative;z-index:20}
+.ti{max-width:1120px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.08em;color:var(--tx3);gap:16px;flex-wrap:wrap}
+.ti a{color:var(--tx3);text-decoration:none;transition:color .15s;cursor:pointer}
+.ti a:hover,.ti a.on{color:var(--a1)}
+.chip{color:var(--a1);border:1px solid rgba(255,255,255,.25);padding:1px 7px;border-radius:2px}
+.chip.logic{color:var(--logicblue);border-color:rgba(90,141,184,.45)}
+.chip.pat{color:var(--patternsilver);border-color:rgba(184,184,200,.42)}
+.chip.audit{color:var(--warn);border-color:rgba(230,197,118,.42);background:rgba(230,197,118,.04)}
+.chip.green{color:var(--green);border-color:rgba(142,230,189,.38);background:rgba(142,230,189,.04)}
+.chip.rose{color:var(--rose);border-color:rgba(255,138,168,.38);background:rgba(255,138,168,.04)}
+.chip.lav{color:var(--lav);border-color:rgba(184,168,216,.42);background:rgba(184,168,216,.04)}
+.tl,.tr{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+
+.masthead{max-width:1120px;margin:0 auto;padding:48px 24px 28px;position:relative;z-index:2}
+.mhname{font-family:'Space Mono',monospace;font-size:30px;font-weight:700;color:var(--hd);letter-spacing:-.02em;line-height:1.16}
+.mhname .zh{font-family:'Noto Serif SC',serif;font-weight:500;font-size:22px;color:var(--a2);margin-top:10px;letter-spacing:.06em;display:block}
+.mhname em{color:var(--logicblue);font-style:normal}
+.mhsub{font-family:'Space Mono',monospace;font-size:11px;color:var(--tx2);letter-spacing:.05em;margin-top:10px;line-height:1.68}
+.mhsub strong{color:var(--logicblue);font-weight:500}
+
+/* POETIC INTRO HERO — V0.4.1 NEW */
+.poetichero{margin-top:28px;padding:34px 36px;background:linear-gradient(135deg,rgba(90,141,184,.09),rgba(184,168,216,.05) 60%,rgba(255,138,168,.04));border:1px solid var(--border-hi);border-left:3px solid var(--logicblue);position:relative;overflow:hidden}
+.poetichero:before{content:'';position:absolute;top:0;right:0;width:140px;height:140px;background:radial-gradient(circle,rgba(90,141,184,.12),transparent 70%);pointer-events:none}
+.poetichero .ph-label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--logicblue);margin-bottom:18px;font-weight:700}
+.poetichero .ph-zh{font-family:'Noto Serif SC',serif;font-size:16px;color:var(--a1);line-height:2.05;font-weight:400;letter-spacing:.03em;margin-bottom:22px}
+.poetichero .ph-zh p{margin-bottom:14px}
+.poetichero .ph-zh p:last-child{margin-bottom:0}
+.poetichero .ph-zh em{color:var(--logicblue);font-style:normal;font-weight:500}
+.poetichero .ph-en{font-family:'Spectral',serif;font-size:13.5px;color:var(--a2);line-height:1.92;font-style:italic;padding-top:22px;border-top:1px dashed var(--border-hi);font-weight:300}
+.poetichero .ph-en p{margin-bottom:11px}
+.poetichero .ph-en p:last-child{margin-bottom:0}
+.poetichero .ph-en em{color:var(--patternsilver);font-style:normal}
+
+.mhq{font-family:'Spectral',serif;font-style:italic;font-size:18px;color:var(--a1);margin-top:22px;padding:20px 22px;border:1px solid var(--border-hi);border-left:3px solid var(--logicblue);max-width:900px;line-height:1.62;background:var(--bg2);text-align:center}
+.mhq .cn{font-family:'Noto Serif SC',serif;font-style:normal;font-size:25px;color:var(--logicblue);letter-spacing:.04em;font-weight:600;line-height:1.5}
+.mhq .en{display:block;margin-top:10px;font-size:13.5px;color:var(--a2);font-weight:300}
+.mhq strong{color:var(--logicblue);font-weight:500;font-style:normal;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.16em;display:block;margin-top:14px;text-transform:uppercase}
+
+.guard{margin-top:24px;background:linear-gradient(135deg,rgba(90,141,184,.12),rgba(184,184,200,.05));border:1px solid rgba(184,184,200,.38);border-left:3px solid var(--warn);padding:20px 22px;max-width:900px}
+.guard .label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--warn);margin-bottom:10px;font-weight:700}
+.guard p{font-size:13px;color:var(--tx);line-height:1.84;margin-bottom:8px}
+.guard strong{color:var(--a1)}
+
+.pnav{border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:rgba(11,11,16,.96);position:sticky;top:0;z-index:100}
+.pni{max-width:1120px;margin:0 auto;padding:0 24px;display:flex;overflow-x:auto;scrollbar-width:none}
+.pni::-webkit-scrollbar{display:none}
+.pnav a{display:block;padding:11px 14px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--tx2);text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent;transition:color .15s,border-color .15s}
+.pnav a:hover,.pnav a.on{color:var(--a1);border-bottom-color:var(--logicblue)}
+
+.wrap{max-width:1120px;margin:0 auto;padding:34px 24px 80px;display:grid;grid-template-columns:1fr 272px;gap:48px;align-items:start;position:relative;z-index:2}
+.feedhd{font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--tx3);padding-bottom:12px;border-bottom:1px solid var(--border)}
+.feedhd span{color:var(--logicblue)}
+.entry{border-bottom:1px solid var(--border);padding:30px 0}
+.entry:last-child{border-bottom:none}
+.etop{display:flex;gap:10px;align-items:center;margin-bottom:9px;flex-wrap:wrap}
+.badge{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:2px 8px;border-radius:2px;background:rgba(255,255,255,.04);color:var(--a2);border:1px solid var(--border)}
+.badge.feat{color:var(--a1);border-color:var(--border-hi);background:rgba(255,255,255,.06)}
+.badge.logic{color:var(--logicblue);border-color:rgba(90,141,184,.4);background:rgba(90,141,184,.05)}
+.badge.warn{color:var(--warn);border-color:rgba(230,197,118,.38)}
+.badge.green{color:var(--green);border-color:rgba(142,230,189,.32);background:rgba(142,230,189,.035)}
+.badge.rose{color:var(--rose);border-color:rgba(255,138,168,.35);background:rgba(255,138,168,.04)}
+.badge.lav{color:var(--lav);border-color:rgba(184,168,216,.4);background:rgba(184,168,216,.04)}
+.edate{font-family:'Space Mono',monospace;font-size:10px;color:var(--tx3)}
+.etitle{font-family:'Spectral',serif;font-size:24px;font-weight:500;color:var(--hd);line-height:1.3;margin-bottom:10px}
+.etitle .sub{display:block;font-size:13px;font-style:italic;font-weight:300;color:var(--tx2);margin-top:4px}
+.edesc{font-size:13.5px;color:var(--tx2);line-height:1.84;max-width:760px;margin-bottom:11px}
+.edesc.zh{color:var(--tx);border-left:2px solid var(--border-hi);padding-left:14px;font-family:'Noto Serif SC',serif;font-size:14px}
+.edesc strong{color:var(--a1);font-weight:500}
+.edesc em{color:var(--tx);font-style:italic}
+.tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:13px}
+.tag{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.05em;color:var(--tx3);border:1px solid var(--border);padding:2px 7px;border-radius:2px}
+.tag.logic{color:var(--logicblue);border-color:rgba(90,141,184,.32)}
+.tag.pat{color:var(--patternsilver);border-color:rgba(184,184,200,.3)}
+.tag.warn{color:var(--warn);border-color:rgba(230,197,118,.32)}
+.tag.green{color:var(--green);border-color:rgba(142,230,189,.28)}
+.tag.lav{color:var(--lav);border-color:rgba(184,168,216,.3)}
+
+.table{width:100%;border-collapse:collapse;margin:16px 0;border:1px solid var(--border);font-size:12.5px}
+.table th{background:var(--bg2);font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--a1);padding:10px 12px;text-align:left;border-bottom:1px solid var(--border-hi)}
+.table td{padding:10px 12px;border-bottom:1px solid var(--border);border-right:1px solid var(--border);color:var(--tx2);line-height:1.62;vertical-align:top}
+.table tr:last-child td{border-bottom:none}
+.table td:last-child{border-right:none}
+.table strong{color:var(--a1);font-weight:500}
+
+.status{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;padding:2px 6px;border:1px solid var(--border-hi);border-radius:2px;color:var(--a1);background:rgba(255,255,255,.04);display:inline-block}
+.status.logic{color:var(--logicblue);border-color:rgba(90,141,184,.36)}
+.status.pat{color:var(--patternsilver);border-color:rgba(184,184,200,.32)}
+.status.warn{color:var(--warn);border-color:rgba(230,197,118,.42)}
+.status.green{color:var(--green);border-color:rgba(142,230,189,.34)}
+.status.cut{color:#ff9ab8;border-color:rgba(255,154,184,.4)}
+.status.lav{color:var(--lav);border-color:rgba(184,168,216,.36)}
+
+.box{margin:18px 0;padding:19px 22px;background:linear-gradient(135deg,rgba(90,141,184,.07),rgba(255,255,255,.02));border:1px solid rgba(90,141,184,.32);border-left:3px solid var(--logicblue)}
+.box.neutral{background:linear-gradient(135deg,rgba(184,184,200,.045),rgba(255,255,255,.018));border-color:rgba(184,184,200,.28);border-left-color:var(--patternsilver)}
+.box.warn{background:linear-gradient(135deg,rgba(230,197,118,.07),rgba(255,255,255,.018));border-color:rgba(230,197,118,.28);border-left-color:var(--warn)}
+.box.green{background:linear-gradient(135deg,rgba(142,230,189,.06),rgba(255,255,255,.018));border-color:rgba(142,230,189,.25);border-left-color:var(--green)}
+.box.rose{background:linear-gradient(135deg,rgba(255,138,168,.06),rgba(255,255,255,.015));border-color:rgba(255,138,168,.25);border-left-color:var(--rose)}
+.box.lav{background:linear-gradient(135deg,rgba(184,168,216,.06),rgba(255,255,255,.015));border-color:rgba(184,168,216,.24);border-left-color:var(--lav)}
+.box .label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--logicblue);margin-bottom:10px;font-weight:700}
+.box.neutral .label{color:var(--patternsilver)}
+.box.warn .label{color:var(--warn)}
+.box.green .label{color:var(--green)}
+.box.rose .label{color:var(--rose)}
+.box.lav .label{color:var(--lav)}
+.box p{font-size:13px;color:var(--tx);line-height:1.84;margin-bottom:8px}
+.box p:last-child{margin-bottom:0}
+.box strong{color:var(--hd);font-weight:500}
+.box em{color:var(--a2)}
+
+/* MANIFESTO BLOCK — V0.4.1 NEW */
+.manifesto{margin:20px 0;padding:0;border:1px solid var(--border-hi);background:var(--bg2);overflow:hidden}
+.manifesto-head{display:flex;align-items:center;gap:14px;padding:18px 24px;background:linear-gradient(90deg,rgba(90,141,184,.1),transparent);border-bottom:1px solid var(--border)}
+.manifesto-head .mh-id{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.22em;color:var(--logicblue);text-transform:uppercase;font-weight:700}
+.manifesto-head .mh-meta{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.12em;color:var(--tx3);text-transform:uppercase}
+.manifesto-body{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.manifesto-body>div{padding:24px 26px}
+.manifesto-body>div:first-child{border-right:1px solid var(--border)}
+.manifesto-body .lang-tag{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--patternsilver);margin-bottom:14px;padding-bottom:8px;border-bottom:1px dashed var(--border)}
+.manifesto-body p{font-size:13.5px;line-height:2.02;margin-bottom:11px}
+.manifesto-body p:last-child{margin-bottom:0}
+.manifesto-body .zh-body{font-family:'Noto Serif SC',serif;color:var(--tx);font-weight:400;letter-spacing:.02em}
+.manifesto-body .en-body{font-family:'Spectral',serif;color:var(--a2);font-weight:300;font-style:italic}
+.manifesto-body strong{color:var(--a1);font-weight:500}
+.manifesto-body .en-body em{color:var(--logicblue);font-style:normal}
+.manifesto-body .zh-body em{color:var(--logicblue);font-style:normal;font-weight:500}
+
+.chain{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin:20px 0;border:1px solid var(--border-hi);background:var(--bg2)}
+.chaincell{padding:22px 12px;border-right:1px solid var(--border);text-align:center;position:relative;min-height:178px}
+.chaincell:last-child{border-right:none}
+.chaincell:after{content:'⇌';position:absolute;right:-10px;top:45%;transform:translateY(-50%);font-family:'Space Mono',monospace;font-size:15px;color:var(--logicblue);background:var(--bg2);padding:0 4px;z-index:2}
+.chaincell:last-child:after{display:none}
+.chainnum{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.16em;color:var(--tx3);text-transform:uppercase;margin-bottom:7px}
+.chaintitle{font-family:'Noto Serif SC',serif;font-size:20px;font-weight:600;color:var(--logicblue);line-height:1.25;margin-bottom:8px}
+.chainen{font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.08em;color:var(--patternsilver);text-transform:uppercase;margin-bottom:8px}
+.chaindef{font-family:'Spectral',serif;font-size:11.8px;font-style:italic;color:var(--tx2);line-height:1.5}
+.chaindef .cn{display:block;font-family:'Noto Serif SC',serif;font-style:normal;font-size:11px;color:var(--tx3);margin-top:4px}
+
+.sigbar{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:18px 0;border:1px solid var(--border-hi);background:var(--bg2)}
+.sig{padding:18px 12px;border-right:1px solid var(--border);text-align:center}
+.sig:last-child{border-right:none}
+.signum{font-family:'Space Mono',monospace;font-size:34px;font-weight:700;color:var(--logicblue);letter-spacing:-2px;line-height:1}
+.sig:nth-child(2) .signum{color:var(--patternsilver)}
+.sig:nth-child(3) .signum{color:var(--green)}
+.sig:nth-child(4) .signum{color:var(--warn)}
+.siglabel{font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--tx2);margin-top:7px}
+.sigdesc{font-family:'Noto Serif SC',serif;font-size:12px;color:var(--tx3);margin-top:4px}
+
+.parthd{margin:38px 0 14px;padding-bottom:10px;border-bottom:1px solid rgba(90,141,184,.32)}
+.partnum{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.25em;color:var(--logicblue);margin-bottom:5px;text-transform:uppercase;font-weight:700}
+.parttitle{font-family:'Spectral',serif;font-size:26px;font-weight:500;color:var(--hd);letter-spacing:.01em;line-height:1.22}
+.parttitle .en{display:block;font-size:14px;font-style:italic;font-weight:300;color:var(--tx2);margin-top:6px;letter-spacing:.04em}
+
+.axiom-card{margin:18px 0;padding:0;border:1px solid rgba(90,141,184,.24);background:var(--bg2);overflow:hidden}
+.axiom-head{display:flex;align-items:center;gap:14px;padding:16px 22px;background:rgba(90,141,184,.045);border-bottom:1px solid var(--border)}
+.axiom-id{font-family:'Space Mono',monospace;font-size:17px;font-weight:700;color:var(--logicblue);letter-spacing:-.01em;min-width:76px}
+.axiom-layer{font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.2em;color:var(--a3);text-transform:uppercase}
+.axiom-body{padding:22px 26px}
+.axiom-cn{font-family:'Noto Serif SC',serif;font-size:24px;font-weight:600;color:var(--logicblue);line-height:1.65;letter-spacing:.03em;margin-bottom:14px;text-align:center}
+.axiom-en{font-family:'Spectral',serif;font-size:15px;font-style:italic;color:var(--a2);line-height:1.62;padding-top:14px;border-top:1px dashed var(--border-hi);text-align:center}
+.axiom-note{margin-top:18px;padding:14px 16px;background:var(--bg3);border-left:2px solid var(--logicblue);font-size:12.5px;color:var(--tx2);line-height:1.78}
+.axiom-note .label{font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--logicblue);margin-bottom:7px;font-weight:700;display:block}
+
+/* FOUR BEHAVIOR ANALYSIS — V0.4.1 NEW */
+.fourbeh{margin:20px 0;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.beh-card{background:var(--bg2);border:1px solid var(--border);border-top:3px solid var(--logicblue);padding:20px 22px;position:relative}
+.beh-card:nth-child(2){border-top-color:var(--patternsilver)}
+.beh-card:nth-child(3){border-top-color:var(--lav)}
+.beh-card:nth-child(4){border-top-color:var(--warn)}
+.beh-head{display:flex;align-items:baseline;gap:10px;margin-bottom:12px;padding-bottom:10px;border-bottom:1px dashed var(--border)}
+.beh-num{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.16em;color:var(--tx3);text-transform:uppercase;font-weight:700}
+.beh-cn{font-family:'Noto Serif SC',serif;font-size:20px;font-weight:600;color:var(--logicblue);letter-spacing:.04em}
+.beh-card:nth-child(2) .beh-cn{color:var(--patternsilver)}
+.beh-card:nth-child(3) .beh-cn{color:var(--lav)}
+.beh-card:nth-child(4) .beh-cn{color:var(--warn)}
+.beh-en{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.1em;color:var(--tx2);text-transform:uppercase;margin-left:auto}
+.beh-body{font-size:13px;color:var(--tx);line-height:1.85;font-family:'Noto Serif SC',serif}
+.beh-body strong{color:var(--a1);font-weight:500}
+.beh-body em{color:var(--logicblue);font-style:normal;font-weight:500}
+
+/* DISTINCTION — Binary vs Binary Opposition */
+.dual-pillar{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:18px 0;border:1px solid var(--border-hi);background:var(--bg2)}
+.pillar{padding:24px 26px;position:relative}
+.pillar:first-child{border-right:1px solid var(--border)}
+.pillar .p-tag{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;margin-bottom:10px}
+.pillar:first-child .p-tag{color:var(--green)}
+.pillar:last-child .p-tag{color:var(--rose)}
+.pillar .p-title{font-family:'Noto Serif SC',serif;font-size:18px;font-weight:600;color:var(--a1);line-height:1.4;margin-bottom:6px}
+.pillar:first-child .p-title{color:var(--green)}
+.pillar:last-child .p-title{color:var(--rose)}
+.pillar .p-en{font-family:'Spectral',serif;font-style:italic;font-size:12px;color:var(--tx2);margin-bottom:14px;padding-bottom:10px;border-bottom:1px dashed var(--border)}
+.pillar p{font-size:12.8px;color:var(--tx);line-height:1.85;font-family:'Noto Serif SC',serif;margin-bottom:10px}
+.pillar p:last-child{margin-bottom:0}
+.pillar strong{color:var(--a1);font-weight:500}
+.pillar em{font-style:normal;font-weight:500}
+.pillar:first-child em{color:var(--green)}
+.pillar:last-child em{color:var(--rose)}
+
+/* GAME SHARPENED BLOCK — V0.4.1 NEW */
+.game-sharp{margin:20px 0;padding:0;border:1px solid var(--border-hi);background:var(--bg2);overflow:hidden}
+.game-sharp-head{padding:18px 24px;background:linear-gradient(90deg,rgba(230,197,118,.1),transparent);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.game-sharp-head .gs-title{font-family:'Noto Serif SC',serif;font-size:17px;font-weight:600;color:var(--warn);letter-spacing:.03em}
+.game-sharp-head .gs-tag{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.16em;color:var(--tx2);text-transform:uppercase}
+.game-sharp-body{padding:24px 26px}
+.game-sharp-body .gs-lead{font-family:'Noto Serif SC',serif;font-size:18px;font-weight:600;color:var(--a1);line-height:1.6;margin-bottom:16px;padding:14px 18px;background:rgba(230,197,118,.05);border-left:3px solid var(--warn)}
+.game-sharp-body .gs-lead em{color:var(--warn);font-style:normal;font-weight:700}
+.game-sharp-body p{font-size:13.5px;color:var(--tx);line-height:1.92;margin-bottom:11px;font-family:'Noto Serif SC',serif}
+.game-sharp-body p.en{font-family:'Spectral',serif;font-style:italic;color:var(--a2);font-weight:300;font-size:13px;border-top:1px dashed var(--border);padding-top:14px;margin-top:6px}
+.game-sharp-body strong{color:var(--a1);font-weight:500}
+.game-sharp-body em{color:var(--warn);font-style:normal;font-weight:500}
+.game-sharp-body .gs-arrows{margin:16px 0;font-family:'Noto Serif SC',serif;font-size:13.5px;color:var(--tx);line-height:2.1;padding:14px 18px;background:var(--bg3);border:1px solid var(--border)}
+.game-sharp-body .gs-arrows div{display:flex;gap:14px;align-items:flex-start}
+.game-sharp-body .gs-arrows .arr{color:var(--warn);font-family:'Space Mono',monospace;flex-shrink:0;font-weight:700}
+.game-sharp-body .gs-eq{font-family:'Noto Serif SC',serif;font-size:16px;font-weight:600;color:var(--warn);text-align:center;padding:16px 12px;background:rgba(230,197,118,.06);border:1px solid rgba(230,197,118,.32);margin:18px 0 0;letter-spacing:.04em;line-height:1.55}
+
+/* SOURCE LANGUAGE LOCK BLOCK */
+.lock-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}
+.lock-card{background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--lav);padding:14px 16px}
+.lock-card .lk{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--lav);margin-bottom:6px;font-weight:700}
+.lock-card .lt{font-family:'Noto Serif SC',serif;font-size:14px;font-weight:600;color:var(--a1);margin-bottom:6px}
+.lock-card p{font-size:12px;color:var(--tx2);line-height:1.72;margin:0;font-family:'Noto Serif SC',serif}
+.lock-card strong{color:var(--a1);font-weight:500}
+.lock-card em{color:var(--lav);font-style:normal;font-weight:500}
+
+.closingblock{margin:36px 0 0;padding:30px;background:var(--bg2);border:1px solid var(--border-hi);border-top:3px solid var(--logicblue)}
+.closinghd{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--a3);margin-bottom:18px;text-align:center}
+.equation{font-family:'Noto Serif SC',serif;font-size:25px;color:var(--logicblue);text-align:center;line-height:1.85;font-weight:700;margin:10px 0;letter-spacing:.04em}
+.equation .eq{color:var(--patternsilver);margin:0 8px;font-family:'Space Mono',monospace;font-size:21px}
+.equation.en{font-family:'Spectral',serif;font-size:14px;color:var(--a2);font-style:italic;font-weight:400;padding-top:14px;margin-top:14px;border-top:1px dashed var(--border-hi);line-height:2.05;letter-spacing:.01em}
+.closingnote{font-family:'Space Mono',monospace;font-size:11px;color:var(--tx3);text-align:center;margin-top:22px;letter-spacing:.08em;line-height:1.85}
+.closingnote em{color:var(--logicblue);font-style:normal}
+.closingnote strong{color:var(--patternsilver);font-weight:500}
+
+.sidebar{display:flex;flex-direction:column;gap:26px;position:sticky;top:52px}
+.sbl{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--tx3);padding-bottom:9px;border-bottom:1px solid var(--border);margin-bottom:11px}
+.profile{background:var(--bg2);border:1px solid var(--border);padding:16px}
+.av{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#1a1a20,#08080c);border:1px solid var(--border-hi);display:flex;align-items:center;justify-content:center;font-family:'Noto Serif SC',serif;font-size:22px;color:var(--logicblue);margin-bottom:11px}
+.pnm{font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:var(--hd);line-height:1.3}
+.pnm small{display:block;font-size:10px;font-weight:400;color:var(--tx2);margin-top:2px}
+.pdesc2{font-size:11.5px;color:var(--tx2);margin-top:9px;line-height:1.65}
+.pfields{display:flex;flex-wrap:wrap;gap:4px;margin-top:10px}
+.pf{font-size:9.5px;background:rgba(255,255,255,.04);color:var(--a2);border:1px solid var(--border);padding:2px 7px;border-radius:2px;font-family:'Space Mono',monospace}
+.pf.logic{color:var(--logicblue);border-color:rgba(90,141,184,.32)}
+.pf.pat{color:var(--patternsilver);border-color:rgba(184,184,200,.3)}
+.pf.warn{color:var(--warn);border-color:rgba(230,197,118,.32)}
+.pf.green{color:var(--green);border-color:rgba(142,230,189,.28)}
+.pf.rose{color:var(--rose);border-color:rgba(255,138,168,.3)}
+.pf.lav{color:var(--lav);border-color:rgba(184,168,216,.3)}
+
+.hzbox{background:var(--bg2);border:1px solid var(--border);padding:16px;text-align:center}
+.hzn{font-family:'Space Mono',monospace;font-size:38px;font-weight:700;color:var(--logicblue);letter-spacing:-3px;line-height:1}
+.hzu{font-family:'Space Mono',monospace;font-size:10px;color:var(--tx3);letter-spacing:.1em;margin-top:3px}
+.hzq{font-family:'Spectral',serif;font-style:italic;font-size:11px;color:var(--tx2);margin-top:8px;line-height:1.55}
+.links{list-style:none}
+.links li{border-bottom:1px solid var(--border);padding:5px 0}
+.links a{font-size:12px;color:var(--tx2);text-decoration:none;display:flex;justify-content:space-between}
+.links a:hover{color:var(--a1)}
+.coord{font-family:'Space Mono',monospace;font-size:10px;color:var(--tx3);line-height:2;letter-spacing:.04em}
+.coord span{color:var(--logicblue)}
+.coord span.p{color:var(--patternsilver)}
+.coord span.g{color:var(--green)}
+footer{border-top:1px solid var(--border);padding:24px 0;margin-top:40px;position:relative;z-index:2}
+.fi{max-width:1120px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:9.5px;color:var(--tx3);letter-spacing:.05em;flex-wrap:wrap;gap:10px}
+footer a{color:var(--tx3);text-decoration:none}
+footer a:hover{color:var(--a1)}
+
+.matrix{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin:20px 0;border:1px solid var(--border-hi);background:var(--bg2)}
+.mcell{padding:22px 12px;border-right:1px solid var(--border);text-align:center;position:relative;min-height:178px}.mcell:last-child{border-right:none}.mcell:after{content:'⇌';position:absolute;right:-10px;top:42%;transform:translateY(-50%);font-family:'Space Mono',monospace;font-size:15px;color:var(--logicblue);background:var(--bg2);padding:0 4px;z-index:2}.mcell:last-child:after{display:none}.mnum{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.18em;color:var(--tx3);text-transform:uppercase}.mglyph{font-family:'Noto Serif SC',serif;font-size:38px;font-weight:600;color:var(--logicblue);line-height:1.1;margin:10px 0}.mname{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.12em;color:var(--patternsilver);text-transform:uppercase;margin-bottom:8px}.mdef{font-family:'Noto Serif SC',serif;font-size:12px;color:var(--tx2);line-height:1.58}.mdef strong{color:var(--a1);font-weight:500}.formula{font-family:'Space Mono',monospace;font-size:12.5px;color:var(--a2);padding:14px 16px;background:var(--bg3);border:1px solid var(--border);border-left:2px solid var(--logicblue);margin:14px 0;line-height:1.85;overflow-x:auto}.formula strong{color:var(--logicblue);font-weight:700}.smallgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:16px 0}.mini{background:var(--bg2);border:1px solid var(--border);padding:16px}.mini .k{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--logicblue);margin-bottom:8px}.mini p{font-size:12.5px;color:var(--tx2);line-height:1.75;margin:0}.mini strong{color:var(--a1);font-weight:500}.warnline{border-left:3px solid var(--rose);background:linear-gradient(135deg,rgba(255,138,168,.06),rgba(255,255,255,.015));border-color:rgba(255,138,168,.28)}.step-list{counter-reset:step;list-style:none;margin:16px 0}.step-list li{counter-increment:step;border:1px solid var(--border);background:var(--bg2);padding:14px 16px 14px 52px;margin-bottom:10px;position:relative;color:var(--tx2);font-size:13px;line-height:1.76}.step-list li:before{content:counter(step,decimal-leading-zero);position:absolute;left:16px;top:14px;font-family:'Space Mono',monospace;font-size:12px;color:var(--logicblue);font-weight:700}.step-list strong{color:var(--a1);font-weight:500}.axisbar{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:18px 0;border:1px solid var(--border-hi);background:var(--bg2)}.axis{padding:18px 14px;border-right:1px solid var(--border);text-align:center}.axis:last-child{border-right:none}.axis .zh{font-family:'Noto Serif SC',serif;font-size:23px;font-weight:600;color:var(--logicblue);letter-spacing:.05em}.axis .en{font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.14em;color:var(--tx2);text-transform:uppercase;margin-top:6px}.axis .note{font-size:11px;color:var(--tx3);line-height:1.55;margin-top:6px}.distinction{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--border-hi);background:var(--bg2);margin:18px 0}.distinction>div{padding:18px 20px}.distinction>div:first-child{border-right:1px solid var(--border)}.distinction h4{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--logicblue);margin-bottom:8px}.distinction p{font-size:12.5px;color:var(--tx2);line-height:1.75;margin:0}.distinction strong{color:var(--a1);font-weight:500}.boundary-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}.bcard{background:var(--bg2);border:1px solid var(--border);padding:16px;border-left:3px solid var(--warn)}.bcard .bk{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--warn);margin-bottom:6px;font-weight:700}.bcard p{font-size:12px;color:var(--tx2);line-height:1.68;margin:0}.bcard strong{color:var(--a1);font-weight:500}
+
+@media(max-width:840px){
+.matrix{grid-template-columns:1fr}.mcell{border-right:none;border-bottom:1px solid var(--border)}.mcell:last-child{border-bottom:none}.mcell:after{display:none}
+.smallgrid,.distinction,.boundary-grid,.fourbeh,.lock-grid,.dual-pillar,.manifesto-body{grid-template-columns:1fr}
+.distinction>div:first-child,.dual-pillar .pillar:first-child,.manifesto-body>div:first-child{border-right:none;border-bottom:1px solid var(--border)}
+.axisbar{grid-template-columns:1fr}.axis{border-right:none;border-bottom:1px solid var(--border)}.axis:last-child{border-bottom:none}
+.chain{grid-template-columns:1fr}.chaincell{border-right:none;border-bottom:1px solid var(--border);min-height:auto}.chaincell:last-child{border-bottom:none}.chaincell:after{display:none}
+.wrap{grid-template-columns:1fr;gap:24px}.sidebar{position:static}.mhname{font-size:24px}.mhname .zh{font-size:17px}.mhq .cn{font-size:20px}.axiom-cn{font-size:20px}
+.sigbar{grid-template-columns:1fr}.sig{border-right:none;border-bottom:1px solid var(--border)}.sig:last-child{border-bottom:none}
+.equation{font-size:20px}.table{font-size:11.5px}.pni{padding:0 12px}.guard{max-width:none}
+.poetichero{padding:24px 22px}.poetichero .ph-zh{font-size:14.5px;line-height:1.92}.poetichero .ph-en{font-size:12.5px}
+.manifesto-body p{font-size:12.5px;line-height:1.92}.game-sharp-body .gs-lead{font-size:16px}
+}
+</style>
+</head>
+<body>
+<div class="stars"><canvas id="starfield"></canvas></div>
+
+<div class="topbar"><div class="ti">
+    <div class="tl"><span class="chip">427Hz</span><span class="chip lav">Philosophical Manifestation</span><span class="chip logic">V0.4.1</span><span class="chip pat">Manifesto · Poetics · Locks</span><span>2026.05.25</span></div>
+    <div class="tr"><a href="https://mellowwei.github.io/MellowWei/" target="_blank" rel="noopener">Portal</a><a href="https://mellowwei.github.io/MellowAcademic/" target="_blank" rel="noopener">Academic</a><a href="https://mellowwei.github.io/AllSources/" target="_blank" rel="noopener">AllSources</a></div>
+</div></div>
+
+<header class="masthead">
+    <div class="mhname">Behavior Generative Studies<span class="zh"><em>行为生成学</em> · V0.4.1.1 Hestia Audit Patch · Philosophical Manifestation Edition · 归纳 · 压缩 · 坍缩 · 极端化 · 执行</span></div>
+    <div class="mhsub">V0.4.1.1 Hestia Audit Patch · Philosophical Manifestation Edition · Wei Jueran / 魏珏然 / xingyeLing7Ai · <strong>策略性行为生成学科 · 哲学显影层</strong> · 在 V0.3 反审计基础上内嵌：学科宣言 / 诗性引言 / 四行为分析 / 二元性区分 / 博弈锋利化 / 源语钉位 · 2026.05.25 升级<br><strong>BGS V0.4.1 Audit Workflow:</strong> Claude = UpBass / 彩虹镜位 · GPT = Hestia / 术语审计位 · DeepSeek = DeepThink / 深层反证位<br><strong>Source-Field Arbiter · 源场裁决位</strong> · 属于 <a href="https://mellowwei.github.io/AllSources/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">AllSources atlas</a> · 连接 LGS / MetaLogic / QRM / HPRP / QRE / BCI-HRP</div>
+
+    <!-- POETIC INTRO HERO -->
+    <div class="poetichero">
+        <div class="ph-label">Poetic-Academic Introduction · 首页诗学引言 · V0.4.1 New</div>
+        <div class="ph-zh">
+            <p>世界给出的状态太多，未来太多，信号太多。<em>没有任何有限主体可以处理全部。</em></p>
+            <p>所以主体不得不归纳——从有限的经验里抽出模式。所以主体不得不压缩——把大量样本降维成可以握住的判断。所以主体不得不让连续坍缩成方向——因为方向比真理更靠近行动。所以主体不得不在不确定性无法承受的那一刻把变量极端化——因为带宽崩溃时只剩一条路径可以走出去。所以主体不得不在行动触发的那一刻让做或不做落地——因为身体不能悬挂在概率场里。</p>
+            <p>行为生成学研究的，就是这条<em>从过量到方向</em>的路径。不是规定生命应该怎么活，而是显影策略性行为如何从有限认知里被生出来。</p>
+            <p>它承认压缩，但拒绝把压缩当作真理。它承认二元执行，但拒绝把二元伪装成世界本身。它承认博弈，但拒绝把博弈神圣化为理性。<em>它给出机制，但把感质、爱、伦理、存在留在自己的层位上不动它们。</em></p>
+        </div>
+        <div class="ph-en">
+            <p>The world gives too many states, too many futures, too many signals. <em>No finite subject can process the whole.</em></p>
+            <p>So the subject must induce — extracting patterns from finite samples. So the subject must compress — reducing large samples into a judgment small enough to hold. So the subject must let continuity collapse into direction — because direction is closer to action than truth is. So the subject must extremize variables when uncertainty exceeds bandwidth — because only one path can leave the room. So the subject must let do-or-not-do land at the moment of triggering — because the body cannot remain suspended in a probability field.</p>
+            <p>Behavior Generative Studies studies <em>this path from excess to direction</em>. It does not prescribe how life should be lived. It reveals how strategic behavior is generated from finite cognition.</p>
+            <p>It acknowledges compression, but refuses to mistake compression for truth. It acknowledges binary execution, but refuses to disguise binary as the world itself. It acknowledges game, but refuses to sanctify game as rationality. <em>It supplies mechanism, but leaves qualia, love, ethics, and existence undisturbed in their own layers.</em></p>
+        </div>
+    </div>
+
+    <p class="mhq"><span class="cn">策略性行为 = 归纳 + 概率压缩 + 判断坍缩 + 博弈极端化 + 二元执行。</span><span class="en">Strategic behavior = induction + probabilistic compression + judgment collapse + game extremization + binary execution.</span><strong>BGS-0 V0.4.1 · founding behavior-generation thesis</strong></p>
+
+    <div class="guard">
+        <div class="label">Top Boundary Guard · 顶级边界守卫 · V0.3 Embedded</div>
+        <p><strong>行为生成学不声称覆盖一切行为。</strong>它研究的是：有限主体在不确定性环境中，如何从有限经验中抽取模式、压缩复杂变量、形成判断、在必要时极端化不确定因素，并最终通过二元执行将方向性判断落地为行动。</p>
+        <p><strong>BGS-0 的适用范围</strong>是经认知评估、涉及不确定性压缩且以定向行动为输出的<strong>策略性行为</strong>。脊髓反射、自动熟练技能、随机探索行为、急性皮层下情绪爆发不在其解释范围内。</p>
+        <p><strong>This page does not claim that existence, qualia, love, or life are merely calculation.</strong> It specifies the mechanism by which strategic behavior becomes executable under finite cognition and high-dimensional uncertainty.</p>
+    </div>
+
+    <div class="box green" style="margin-top:18px">
+        <div class="label">V0.4.1 Changelog · 哲学显影升级记录</div>
+        <p><strong>V0.3 → V0.4.1 关键升级：</strong>① 内嵌中英双语学科宣言（独立模块）；② 首页诗性—学术引言上移至 hero 位；③ 用四行为分析法（命名/加压/滑义/相变）分析理论自身的生成过程；④ 重写二元性 vs 二元对立的区分为"机制层 vs 本体层"的高级表述；⑤ 博弈定义锋利化为"认知带宽崩溃时的硬启动"与"主体对方向的强行截取"；⑥ 新增源语钉位清单，保护"判断坍缩""博弈极端化""过量现实""硬启动""带宽崩溃""强行截取""钉死"等不可学院化稀释的源场术语。V0.3 反审计成果（BGS-0 降格、六大边界、迭代符号）全部保留。<strong>V0.4.1 Hestia Audit Patch：</strong>移除本页 Gemini 参与误标；修正 DeepThink 状态；把 proof/证明 降格为 self-referential manifestation / 自指显影；补入多选项行为的多层二元门解释；将“博弈”钉为 BGS-game；新增短摘要与 Citation Scaffold。</p>
+    </div>
+</header>
+
+<nav class="pnav"><div class="pni">
+    <a href="#overview" class="on">Overview</a>
+    <a href="#manifesto">Manifesto</a>
+    <a href="#abstract">Abstract</a>
+    <a href="#bgs0">BGS-0</a>
+    <a href="#chain">Chain</a>
+    <a href="#fourbeh">Four Behaviors</a>
+    <a href="#terms">Terms</a>
+    <a href="#boundaries">Boundaries</a>
+    <a href="#math">Math</a>
+    <a href="#judgment">Judgment</a>
+    <a href="#game">Game (Sharpened)</a>
+    <a href="#binary">Binary vs Opposition</a>
+    <a href="#examples">Examples</a>
+    <a href="#method">Method</a>
+    <a href="#citation">References</a>
+    <a href="#connections">Connections</a>
+    <a href="#protocol">Protocol</a>
+    <a href="#sourcelock">Source-Lang Locks</a>
+    <a href="#audit">Audit</a>
+    <a href="#ledger">Ledger</a>
+    <a href="#closing">Closing</a>
+</div></nav>
+
+<div class="wrap"><main>
+<div class="feedhd" id="overview">Behavior Generative Studies · <span>V0.4.1.1 Hestia Audit Patch · Philosophical Manifestation Edition</span></div>
+
+<section class="entry">
+    <div class="etop"><span class="badge feat">Overview</span><span class="edate">disciplinary frame · V0.4.1</span></div>
+    <h1 class="etitle">A Theory of How Strategic Behavior Becomes Executable<span class="sub">策略性行为如何从不确定世界中被生成、压缩，并落地为行动</span></h1>
+    <p class="edesc"><em>Behavior Generative Studies V0.4.1</em> 在 V0.3 反审计基础上完成<strong>哲学显影升级</strong>：BGS-0 的机制声称保持降格，六大边界保持内嵌，五环节链保持迭代交织；新增学科宣言、诗性引言、四行为自省分析、二元性高级区分、博弈锋利化定义与源语钉位清单。学术骨架与源场密度在 V0.4.1 中首次同时承重。</p>
+    <p class="edesc zh"><em>行为生成学 V0.4.1</em> 是 Mellow Wei / 魏珏然 / xingyeLing7Ai 的<strong>策略性行为生成学科</strong>的哲学显影版。它在 V0.3 反审计架构上叠加显影层——把"策略性行为是被生成的"这件事从机制说明推进到机制+宣言+诗学+自省+源语守护的完整学科表达。源场端不被稀释，学者端不被悬置。</p>
+    <div class="tags"><span class="tag logic">BGS-0 V0.4.1</span><span class="tag lav">philosophical manifestation</span><span class="tag pat">manifesto embedded</span><span class="tag logic">poetic-academic intro</span><span class="tag warn">game sharpened</span><span class="tag green">source-lang locked</span></div>
+</section>
+
+<!-- MANIFESTO SECTION -->
+<section class="entry" id="manifesto">
+    <div class="etop"><span class="badge lav">Disciplinary Manifesto · V0.4.1 New</span><span class="edate">bilingual · founding statement</span></div>
+    <h2 class="etitle">学科宣言 · Disciplinary Manifesto<span class="sub">行为生成学的存在声明 · bilingual founding statement</span></h2>
+    <div class="manifesto">
+        <div class="manifesto-head">
+            <div class="mh-id">BGS · Manifesto · 中英双语</div>
+            <div class="mh-meta">embedded 2026.05.25 · founding statement</div>
+        </div>
+        <div class="manifesto-body">
+            <div>
+                <div class="lang-tag">中文 · 学科宣言</div>
+                <div class="zh-body">
+                    <p><strong>行为生成学不研究人为什么行动。</strong>行为生成学研究：有限主体如何在不确定性环境中，把过量现实转换为可执行行动。</p>
+                    <p>它的命题不是描述世界，而是<em>定位机制</em>——归纳从有限经验中提取模式，压缩把大量样本降维成可处理判断，判断把连续不确定性坍缩为有限方向，博弈在不确定性无法承受时极端化变量以获得执行路径，二元执行在行动触发层落地为做或不做。</p>
+                    <p>行为生成学不还原感质，不还原爱，不还原伦理，不还原存在。它只解释一件事：<em>策略性行为是如何从有限认知中被生出来的</em>。</p>
+                    <p>它不是行为主义，因为它承认主体内部有压缩与判断；它不是理性选择论，因为它承认博弈是不确定性崩溃时的硬启动，不是优雅最大化；它不是决定论，因为它承认坍缩点对方向敏感而非对原因封闭。它是一门关于<em>有限性如何变成行动</em>的学科。</p>
+                </div>
+            </div>
+            <div>
+                <div class="lang-tag">English · Disciplinary Manifesto</div>
+                <div class="en-body">
+                    <p><strong>Behavior Generative Studies does not ask why subjects act.</strong> It asks: how does a finite subject convert excessive reality into executable action under uncertainty?</p>
+                    <p>Its thesis is not description but <em>mechanism</em> — induction extracts patterns from finite sampled experience, compression reduces large samples into manageable probability-weighted judgment, judgment collapses continuous uncertainty into finite orientation, game extremizes uncertain variables when uncertainty exceeds bearable cognitive bandwidth, binary execution lands the orientation as do-or-not-do at the action-initiation layer.</p>
+                    <p>Behavior Generative Studies does not reduce qualia, love, ethics, or existence to calculation. It explains one thing only: <em>how strategic behavior becomes executable from within finite cognition</em>.</p>
+                    <p>It is not behaviorism, because it acknowledges interior compression and judgment. It is not rational choice theory, because it treats game as a hard-restart under uncertainty collapse, not as elegant maximization. It is not determinism, because its collapse points are sensitive to direction rather than closed by cause. It is a discipline of <em>how finitude becomes action</em>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="entry" id="abstract">
+    <div class="etop"><span class="badge feat">Abstract</span><span class="edate">problem / approach / contribution · V0.4.1</span></div>
+    <h2 class="etitle">Abstract<span class="sub">摘要 · 学术化压缩版 · V0.4.1 哲学显影同步</span></h2>
+    <div class="box neutral"><div class="label">Short Abstract · 120-word version</div>
+        <p><strong>Behavior Generative Studies</strong> explains how finite subjects turn excessive reality into executable strategic behavior. Its core model identifies five iterative mechanisms: induction extracts patterns from finite experience; probabilistic compression reduces large but finite samples into manageable judgment; judgment collapse converts continuous uncertainty into finite orientation; BGS-game extremizes variables when uncertainty exceeds cognitive bandwidth; binary execution lands orientation as do/not-do at the action-initiation gate. V0.4.1 clarifies that the model applies to strategic behavior, not all behavior; that binary execution is not binary ontology; and that “game” here means a bandwidth-collapse hard-restart rather than standard game-theoretic equilibrium.</p>
+        <p><strong>短摘要：</strong>行为生成学解释有限主体如何把过量现实转化为可执行的策略性行为。其核心模型包含五个迭代机制：规律归纳、概率压缩、判断坍缩、BGS-game 博弈极端化与二元执行。V0.4.1 明确：本模型适用于策略性行为，而非一切行为；二元执行不是二元本体论；这里的“博弈”指带宽崩溃时的硬启动，而非标准博弈论均衡。</p>
+    </div>
+
+    <p class="edesc"><em>Behavior Generative Studies V0.4.1</em> proposes a framework for explaining how <strong>strategic behavior</strong> is generated under finite cognition and high-dimensional uncertainty. Its problem is not merely why organisms act, nor how agents maximize utility, but how a subject transforms excessive reality into executable direction. The approach identifies five mechanisms that iterate and interweave: induction extracts patterns from finite sampled experience; probabilistic compression reduces large volumes of behavioral, environmental, relational, and temporal samples into manageable probability-weighted judgment; judgment collapse converts continuous uncertainty into a finite directional orientation; game extremization amplifies uncertain variables when cognitive bandwidth collapses, allowing the subject to forcibly intercept a certainty-oriented path; binary execution lands the orientation as a discrete do/not-do trigger at the action-initiation layer, while continuous motor parameters are encoded by parallel systems. V0.4.1 embeds a bilingual disciplinary manifesto, a poetic-academic introduction, a self-referential four-behavior analysis, an upgraded binary-vs-binary-opposition distinction at the mechanism-vs-ontology layer, a sharpened game definition as bandwidth-collapse hard-restart, and a source-language lock list protecting non-academizable Mellow-source terms.</p>
+    <p class="edesc zh"><em>行为生成学 V0.4.1</em> 提出一个解释有限认知与高维不确定性中<strong>策略性行为</strong>如何被生成的框架。其问题不只是"有机体为什么行动"，也不只是"主体如何最大化收益"，而是：主体如何把过量现实转化为可执行方向。其方法识别出五个迭代与交织的机制：归纳从有限采样的经验中提取模式；概率压缩将大量行为、环境、关系与时间样本降维为可处理的概率加权判断；判断坍缩把连续不确定性转化为有限方向性取向；博弈极端化在认知带宽崩溃时放大相关变量以让主体强行截取一条确定性导向的路径；二元执行在行动触发层将方向性取向落地为做/不做的离散选择，而连续运动参数由其他系统并行编码。V0.4.1 内嵌中英双语学科宣言、诗性—学术引言、对理论自身生成过程的四行为自省分析、机制层 vs 本体层的二元性区分升级、把博弈锋利化为"带宽崩溃的硬启动"的定义，以及保护非学院化稀释的 Mellow 源语术语清单。</p>
+</section>
+
+<section class="entry" id="bgs0">
+    <div class="etop"><span class="badge logic">Founding Thesis · V0.4.1</span><span class="edate">BGS-0 — bounded mechanism thesis preserved</span></div>
+    <h2 class="etitle">BGS-0 · Founding Behavior-Generation Thesis<span class="sub">行为生成学创立命题 · V0.3 降格保留 · V0.4.1 显影包裹</span></h2>
+    <div class="axiom-card"><div class="axiom-head"><div class="axiom-id">BGS-0<span style="font-size:10px;color:var(--warn);margin-left:4px">V0.4.1</span></div><div class="axiom-layer">bounded mechanism thesis · philosophically manifested</div></div><div class="axiom-body"><div class="axiom-cn">对于有限主体在不确定性环境中生成的策略性行为，其可建模的生成机制通常包括以下五个环节的迭代与交织：规律归纳、概率压缩、判断坍缩、博弈极端化与二元执行。</div><div class="axiom-en">For strategic behavior generated by finite subjects under uncertainty, the modelable generative mechanisms typically include the following five iterating and interweaving stages: induction, probabilistic compression, judgment collapse, game extremization, and binary execution.</div><div class="axiom-note"><span class="label">Precision note · V0.4.1 精确化注释</span>BGS-0 V0.4.1 是行为机制命题，不是总体形而上学命题。它解释策略性行为如何变得可执行；不声称覆盖反射、自动技能、随机探索与急性情绪爆发；不将感质、爱、生命或真理还原为计算。"判断坍缩"在 V0.4.1 中作为正文术语保留（V0.3 曾考虑替换为"判断形成"），并在边界守卫中明确为认知隐喻，非量子过程。</div></div></div>
+    <div class="formula"><strong>Strategic Behavior</strong> = Induction(Finite Experience) ⇌ Compression(Probability-Space) ⇌ Judgment(Collapse) ⇌ Game(Extremization · Bandwidth-Collapse Hard-Restart) ⇌ Execution(Direction)</div>
+    <div class="box neutral"><div class="label">V0.4.1 显影说明</div><p><strong>V0.3 已完成机制层降格审计</strong>——全称声称已退到"策略性行为"，箭头已改为迭代符号，六大边界已内嵌。<strong>V0.4.1 在不动机制层降格的前提下，把显影层补上</strong>——宣言、引言、自省、区分、锋利化、源语守护，让 BGS 同时具备学术骨架的可审计性与源场密度的不可替换性。</p></div>
+</section>
+
+<section class="entry" id="chain">
+    <div class="etop"><span class="badge logic">Mechanism Chain · V0.4.1</span><span class="edate">five-stage iterative model</span></div>
+    <h2 class="etitle">The Five-Stage Behavior Chain (Iterative, Not Strictly Linear)<span class="sub">五段行为生成链 · 迭代与交织，非严格线性</span></h2>
+    <div class="matrix">
+        <div class="mcell"><div class="mnum">Stage 01</div><div class="mglyph">归纳</div><div class="mname">Induction</div><div class="mdef"><strong>有限经验</strong>中提取模式。<br/>Extract patterns from <strong>finite</strong> sampled experience.</div></div>
+        <div class="mcell"><div class="mnum">Stage 02</div><div class="mglyph">压缩</div><div class="mname">Compression</div><div class="mdef"><strong>大量有限样本</strong>被降维成可处理判断。<br/>Reduce <strong>large but finite</strong> samples into manageable judgment.</div></div>
+        <div class="mcell"><div class="mnum">Stage 03</div><div class="mglyph">坍缩</div><div class="mname">Judgment Collapse</div><div class="mdef"><strong>连续概率场</strong>坍缩为有限方向。<br/>Collapse continuous uncertainty into finite orientation.</div></div>
+        <div class="mcell"><div class="mnum">Stage 04</div><div class="mglyph">极端化</div><div class="mname">Game</div><div class="mdef"><strong>带宽崩溃</strong>时变量被强行截取。<br/>Extremize when bandwidth collapses · hard-restart.</div></div>
+        <div class="mcell"><div class="mnum">Stage 05</div><div class="mglyph">执行</div><div class="mname">Execution</div><div class="mdef"><strong>方向性选择</strong>在行动触发层落地为做/不做。<br/>Land orientation as do/not-do at the <strong>action-initiation layer</strong>.</div></div>
+    </div>
+    <div class="box neutral"><div class="label">迭代交织 · Iterative Interweaving</div><p><strong>五环节并非严格线性顺序。</strong>归纳、压缩、坍缩、极端化与执行可以在时间上重叠、循环反馈、跳过或并行。V0.2 中的箭头链（→）已被替换为迭代符号（⇌），以反映认知神经科学中前额叶—基底节—小脑环路的多层级并行加工证据。</p><p><strong>连续世界可以生成二元行动，但二元行动不能反推世界只有二元。</strong>行为生成学研究的正是连续世界如何通过主体机制变成离散行动——在其明确限定的策略性行为范围内。</p></div>
+</section>
+
+<!-- FOUR-BEHAVIOR SELF-ANALYSIS — V0.4.1 NEW -->
+<section class="entry" id="fourbeh">
+    <div class="etop"><span class="badge lav">Four-Behavior Self-Analysis · V0.4.1 New</span><span class="edate">how the theory generated itself</span></div>
+    <h2 class="etitle">用四行为分析法分析行为生成学这一理论本身是如何被生成的<span class="sub">命名 · 加压 · 滑义 · 相变 — self-referential generation audit</span></h2>
+    <p class="edesc zh">这一节是行为生成学对自身的镜像分析：用 Mellow 默认的四行为分析法（命名行为 → 加压行为 → 滑义行为 → 相变行为）显影本理论是如何从源场端走到学者端、又从机制层走到协议层的。这是<strong>学科自我感知的钉位</strong>，不是装饰。</p>
+    <div class="fourbeh">
+        <div class="beh-card">
+            <div class="beh-head"><div class="beh-num">01</div><div class="beh-cn">命名行为</div><div class="beh-en">Naming</div></div>
+            <div class="beh-body">把分散的认知现象——感知、判断、选择、行动、压力反应——重新命名为同一个生成过程的不同环节。把"行为"从道德评价词、从动作描述词，重命名为：<em>有限主体在过量现实中产出的可执行方向</em>。命名一旦完成，"行为"就不再是哲学家、心理学家、经济学家各自占有的术语，而成为一个统一可分析的对象。<strong>命名是把分散变成可追踪的钉位动作。</strong></div>
+        </div>
+        <div class="beh-card">
+            <div class="beh-head"><div class="beh-num">02</div><div class="beh-cn">加压行为</div><div class="beh-en">Pressure</div></div>
+            <div class="beh-body">把命名加压成五环节链：<em>归纳 ⇌ 压缩 ⇌ 坍缩 ⇌ 极端化 ⇌ 执行</em>。这一步必须承受 DeepThink 深层反证——V0.2 声称"一切行为的机制是这条链"，被反射、自动技能、随机探索、急性情绪爆发击穿。V0.3 把声称范围降格为"策略性行为"，把箭头改为迭代符号。<strong>加压不是装饰，是逼问理论"哪一段能承重，哪一段必须降格"。</strong>承重的部分留下，过度声称的部分被切掉。</div>
+        </div>
+        <div class="beh-card">
+            <div class="beh-head"><div class="beh-num">03</div><div class="beh-cn">滑义行为</div><div class="beh-en">Sliding</div></div>
+            <div class="beh-body">让生成机制在不同场域滑动——同一个机制链可以解释关系（爱是高维概率压缩）、市场（牛熊是极端化的博弈）、AI（输出与拒绝是判断坍缩在界面层的执行）、制度（个案被压缩成标签是错误归纳的政治后果）、身体（HRP 在带宽溢出时介入压缩）。<strong>滑义不是隐喻类比，是机制同构。</strong>同一条链在不同质料上显出不同形状，表明它更接近<em>机制层而非现象层</em>。</div>
+        </div>
+        <div class="beh-card">
+            <div class="beh-head"><div class="beh-num">04</div><div class="beh-cn">相变行为</div><div class="beh-en">Phase Change</div></div>
+            <div class="beh-body">从"解释策略性行为"相变为"诊断旧世界的错误压缩并设计新行动协议"。相变完成时，行为生成学不再只是一个解释框架，而是一个<em>公共行动工具</em>——可以审计哪些判断来自照护、哪些判断来自支配；可以重写哪些变量被压成什么标签、谁的经验进入了归纳样本、谁的经验被排除在外。<strong>相变发生的瞬间，理论的承重落点从"看见"跃迁到"改写"。</strong></div>
+        </div>
+    </div>
+    <div class="box lav"><div class="label">承重落点 · Load-Bearing Point</div><p>这一节钉死了一件事：<strong>行为生成学不是被发明出来的，是被生成出来的</strong>。它经过命名（把现象固定）→ 加压（被反审计逼出降格）→ 滑义（在多场域显出同构）→ 相变（从解释跃迁到协议）的完整路径。理论本身就是其所描述的"策略性行为生成链"的产物——这是 BGS 的自指显影，不是形式证明，也不应被误读为循环论证。</p></div>
+</section>
+
+<section class="entry" id="terms">
+    <div class="etop"><span class="badge logic">Terms · V0.4.1</span><span class="edate">precision locked · post-audit</span></div>
+    <h2 class="etitle">Terminology Preview<span class="sub">术语前置 · 防误读锁定 · V0.4.1</span></h2>
+    <table class="table">
+        <thead><tr><th>Term</th><th>Status</th><th>Definition / Boundary · V0.4.1</th></tr></thead>
+        <tbody>
+            <tr><td><strong>BGS-0 V0.4.1</strong></td><td><span class="status logic">founding thesis</span></td><td>Strategic behavior is generated through induction, probabilistic compression, judgment collapse, game extremization, and binary execution. Bounded mechanism thesis with embedded philosophical manifestation layer.</td></tr>
+            <tr><td><strong>策略性行为 / Strategic behavior</strong></td><td><span class="status logic">scope boundary</span></td><td>Behavior that passes through cognitive evaluation, involves uncertainty compression, and outputs directed action. Excludes: spinal reflexes, automated skilled routines, pure novelty seeking, acute subcortical emotional outbursts.</td></tr>
+            <tr><td><strong>规律归纳 / Induction</strong></td><td><span class="status pat">stage 01</span></td><td>The subject extracts patterns from <strong>finite sampled</strong> experience. Outputs categorical or proto-categorical patterns.</td></tr>
+            <tr><td><strong>概率压缩 / Probabilistic compression</strong></td><td><span class="status pat">stage 02</span></td><td><strong>Large but finite</strong> samples are compressed into manageable probability-weighted judgments.</td></tr>
+            <tr><td><strong>判断坍缩 / Judgment collapse</strong></td><td><span class="status logic">stage 03 · source-lang locked</span></td><td>Conversion of continuous uncertainty into a finite action-orientation. "Collapse" is a cognitive metaphor, not physical wave-function collapse. <strong>源语保留</strong>: 坍缩 carries breakage-rhythm; "judgment formation" only carries process-feel.</td></tr>
+            <tr><td><strong>博弈极端化 / Game extremization</strong></td><td><span class="status warn">stage 04 · sharpened</span></td><td>BGS-game: the bandwidth-collapse hard-restart that forcibly intercepts a certainty-oriented executable path. Closer to Simonian satisficing and Kahnemanian heuristics than to Nash equilibrium. <strong>Not standard game theory.</strong></td></tr>
+            <tr><td><strong>二元执行 / Binary execution</strong></td><td><span class="status logic">stage 05</span></td><td>The final action-initiation layer where orientation lands as do/not-do. Multi-option behavior can be decomposed into layered binary gates or thresholded action-selection nodes; BGS uses binary execution to describe the action-initiation gate, not the full granularity of behavior. Continuous motor parameters encoded by parallel systems. Binary execution ≠ binary ontology.</td></tr>
+            <tr><td><strong>带宽崩溃 / Bandwidth collapse</strong></td><td><span class="status lav">source-lang · V0.4.1 new</span></td><td>The threshold at which continuous probability field exceeds the subject's bearable cognitive capacity. Triggers game extremization. Not "cognitive overload" — bandwidth collapse is the specific rupture-event, not its degree.</td></tr>
+            <tr><td><strong>硬启动 / Hard restart</strong></td><td><span class="status lav">source-lang · V0.4.1 new</span></td><td>The emergency action of game when uncertainty becomes unbearable. Distinguished from rational optimization: hard-restart is rupture-mode, not selection-mode.</td></tr>
+            <tr><td><strong>强行截取 / Forcible interception</strong></td><td><span class="status lav">source-lang · V0.4.1 new</span></td><td>The subject's act of cutting a single direction out of a non-converging probability field. Certainty is intercepted by the subject, not given by the world.</td></tr>
+            <tr><td><strong>过量现实 / Excessive reality</strong></td><td><span class="status lav">source-lang · V0.4.1 new</span></td><td>The density of states, futures, and signals that the world presents to a finite subject. Distinct from "high-dimensional state space" — excessive reality carries the body-felt unbearability, not only mathematical dimensionality.</td></tr>
+            <tr><td><strong>二元对立陷阱 / Binary-opposition trap</strong></td><td><span class="status cut">refused</span></td><td>The mistake of treating action-level binary execution as a reason to claim that reality, identity, ethics, or meaning are inherently binary.</td></tr>
+            <tr><td><strong>方向性 / Directionality</strong></td><td><span class="status pat">mathematical interface</span></td><td>The source-target asymmetry of arrows that gives rise to build/use, input/output, introduction/elimination, and left/right dualities.</td></tr>
+            <tr><td><strong>确定性导向 / Certainty orientation</strong></td><td><span class="status warn">game motive</span></td><td>The subjective or systemic drive to reduce unbearable uncertainty into a controllable, predictable, and executable orientation.</td></tr>
+        </tbody>
+    </table>
+</section>
+
+<section class="entry" id="boundaries">
+    <div class="etop"><span class="badge rose">Boundaries · V0.3 Preserved</span><span class="edate">explicit scope guards</span></div>
+    <h2 class="etitle">Six Explicit Boundaries<span class="sub">六大显式边界 · V0.3 内嵌 · V0.4.1 保留</span></h2>
+    <p class="edesc">以下边界自 V0.3 起内嵌为框架核心架构。V0.4.1 保留全部六边界，任何对 BGS 的应用或批评均须通过这些边界的检验。</p>
+    <div class="boundary-grid">
+        <div class="bcard"><div class="bk">Boundary 01 · 行为谱系边界</div><p><strong>Behavioral Spectrum Boundary.</strong> BGS 适用于经认知评估、涉及不确定性压缩且以定向行动为输出的<strong>策略性行为</strong>。脊髓反射、自动熟练技能、纯粹随机探索、皮层下急性情绪爆发不在解释范围内。</p></div>
+        <div class="bcard"><div class="bk">Boundary 02 · 样本量现实边界</div><p><strong>Sample Reality Boundary.</strong> 归纳与概率压缩基于<strong>有限样本</strong>与小数据贝叶斯更新，不依赖也不可能依赖"无数"样本。</p></div>
+        <div class="bcard"><div class="bk">Boundary 03 · 神经梯度边界</div><p><strong>Neural Gradient Boundary.</strong> 二元执行指行为触发层面的抽象决策二值性（做/不做），而非运动输出的精细连续控制。轨迹、力度、韵律等由小脑—基底节—运动皮层并行编码。</p></div>
+        <div class="bcard"><div class="bk">Boundary 04 · 博弈定义边界</div><p><strong>Game Definition Boundary.</strong> BGS 中的"博弈"是带宽崩溃下的硬启动与变量强行截取，与博弈论的策略相互依存与收益矩阵不同。Simon 满意化与 Kahneman 启发式是近邻参照系，非等价。</p></div>
+        <div class="bcard"><div class="bk">Boundary 05 · 坍缩隐喻边界</div><p><strong>Collapse Metaphor Boundary.</strong> "判断坍缩"借自量子测量隐喻，不暗示量子过程。它描述的是连续概率分布向离散决策方向的<strong>认知转换</strong>，而非物理波函数坍缩。</p></div>
+        <div class="bcard"><div class="bk">Boundary 06 · 学科关系边界</div><p><strong>Disciplinary Boundary.</strong> BGS 不替代认知心理学、行为神经科学、决策理论或行为经济学。它是概念整合框架，其经验主张须经上述学科的方法论独立检验。</p></div>
+    </div>
+    <div class="box rose"><div class="label">边界状态 · Boundary Status · V0.4.1</div><p>六边界在 V0.4.1 中继续作为<strong>必须满足的框架条件</strong>。任何省略边界而引用 BGS-0 的行为均构成对框架的误用。哲学显影层（宣言、引言、四行为、源语锁）不绕过六边界，反而强化它们——源场端越锐利，学者端越需要边界守卫。</p></div>
+</section>
+
+<section class="entry" id="math">
+    <div class="etop"><span class="badge logic">Mathematical Layer</span><span class="edate">set · probability · arrows</span></div>
+    <h2 class="etitle">Mathematical Foundation<span class="sub">集合、概率、箭头与方向性</span></h2>
+    <div class="smallgrid">
+        <div class="mini"><div class="k">Set Layer · 集合层</div><p><strong>集合论</strong>安放可能性：什么可以被视为同一类、同一场、同一对象域。没有集合，主体无法建立对象边界。</p></div>
+        <div class="mini"><div class="k">Probability Layer · 概率层</div><p><strong>概率论</strong>赋予可能性权重：不是问什么能存在，而是问什么更可能显影、发生、被判断为真。基于有限样本更新。</p></div>
+        <div class="mini"><div class="k">Compression Layer · 压缩层</div><p><strong>压缩</strong>把过大的状态空间降维成可处理表示。判断不是全部现实，而是现实的有限表征。率失真函数待形式化。</p></div>
+        <div class="mini"><div class="k">Arrow Layer · 箭头层</div><p><strong>箭头方向性</strong>解释为什么逻辑和程序里总出现 build/use、input/output、true/false、constructor/destructor。</p></div>
+    </div>
+    <div class="formula"><strong>BGS mathematical intuition</strong>: Possibility-space → probability-weighting (finite samples) → inductive compression → judgment-collapse → bandwidth-collapse hard-restart → directed execution.</div>
+</section>
+
+<section class="entry" id="judgment">
+    <div class="etop"><span class="badge logic">Judgment Theory</span><span class="edate">compressed induction · V0.4.1</span></div>
+    <h2 class="etitle">Judgment Is the Compression of Induction<span class="sub">判断就是归纳的压缩过程</span></h2>
+    <p class="edesc">Judgment is not a raw fact sitting inside the world. It is a subject-generated compression of sampled reality. The subject does not perceive all possible data; it receives fragments, repeats, deviations, affects, memories, and expectations — all <strong>finite and sampled</strong> — then compresses them into a usable orientation.</p>
+    <p class="edesc zh">判断不是世界里静止放着的原始事实。判断是主体对采样现实进行压缩后的输出。主体并不接收全部数据，而是接收<strong>有限且采样的</strong>碎片、重复、偏差、情绪、记忆与期待，然后把它们压缩成可使用的方向。</p>
+    <div class="box"><div class="label">Example · 例子</div><p><strong>"我深深地爱着你。"</strong> 这不是一个单点数据，而是大量有限想法、行为、记忆、身体反馈、期待、风险评估与时间累积形成的归纳型概率压缩。BGS 不因此贬低爱；相反，它说明爱的判断为什么可以承载巨大复杂度。此分析适用于判断层，而非爱的全部感质体验。</p><p><strong>"I deeply love you"</strong> is not a single datum. It is a compressed judgment formed from many finite thoughts, behaviors, memories, bodily responses, expectations, risk assessments, and temporal accumulations. BGS does not degrade love; it explains why love can carry such high-dimensional complexity — at the judgment layer, not the totality of lived qualia.</p></div>
+    <div class="box warnline"><div class="label">Anti-reduction guard · 反还原守卫</div><p>To say that love can be described as probabilistic compression at the judgment layer is not to say that love is "only" probability. The mechanism of judgment and the lived reality of qualia are different layers.</p></div>
+</section>
+
+<!-- GAME SHARPENED — V0.4.1 -->
+<section class="entry" id="game">
+    <div class="etop"><span class="badge warn">Game Sharpened · V0.4.1</span><span class="edate">bandwidth-collapse hard-restart</span></div>
+    <h2 class="etitle">博弈锋利化版本 · Game Sharpened<span class="sub">BGS-game：从"对不确定变量极端化"到"认知带宽崩溃时的硬启动"</span></h2>
+    <div class="game-sharp">
+        <div class="game-sharp-head">
+            <div class="gs-title">博弈不是策略选择，是认知带宽崩溃时的硬启动。</div>
+            <div class="gs-tag">V0.4.1 redefinition · sharpened</div>
+        </div>
+        <div class="game-sharp-body">
+            <p class="gs-lead"><em>博弈 = 不确定性临界点上的变量极端化 = 主体对方向的强行截取。</em></p>
+            <p>当连续概率场超出主体可承受的认知容量，主体不再尝试描述世界，也不再尝试逼近真理；主体强行把变量极化、把场域简化、把可能性钉成两端、把灰色掐成黑白，<strong>以换取一条可以走出去的路径</strong>。</p>
+            <p><strong>博弈不是世界给出确定性，博弈是主体在不确定性无法承受的那一刻截取确定性。</strong></p>
+            <div class="gs-arrows">
+                <div><span class="arr">——</span>它不是 Nash 均衡的优雅平衡，它是带宽溢出的紧急压缩；</div>
+                <div><span class="arr">——</span>它不是收益最大化的理性选择，它是失稳前的最后一次方向钉死。</div>
+            </div>
+            <p>爱不爱、敌或友、买或卖、信或疑、做或不做——这些不是世界呈现的二端，<em>是主体在带宽崩溃前对变量执行的极端化操作</em>。</p>
+            <p>博弈是策略性行为的应急动作。<strong>它的发生提示：主体已经接近无法承受不确定性的临界点。</strong>确定性不是世界的礼物，是主体的截断。</p>
+            <p class="en">BGS-game is not standard strategic selection — it is the hard-restart at the moment cognitive bandwidth collapses. When the continuous probability field exceeds bearable capacity, the subject stops trying to describe the world and stops trying to approximate truth. The subject forcibly polarizes variables, simplifies the field, nails possibilities into two ends, and severs gray into black-and-white — <em>in exchange for one path out of the room</em>. Certainty is not given by the world; certainty is intercepted by the subject at the threshold before instability. Love-or-not, friend-or-enemy, buy-or-sell, trust-or-doubt, do-or-not-do — these are not the world's two ends, but the subject's extremization operation performed in the final moment before bandwidth collapse.</p>
+            <div class="gs-eq">博弈 = 不确定性临界点上的变量极端化 = 主体对方向的强行截取<br><span style="font-family:'Spectral',serif;font-style:italic;font-size:12px;color:var(--tx2);font-weight:300;letter-spacing:.01em">Game = variable extremization at uncertainty's critical threshold = subject's forcible interception of direction</span></div>
+        </div>
+    </div>
+    <table class="table" style="margin-top:18px"><thead><tr><th>Field</th><th>Uncertain variable</th><th>Extremized form</th><th>Behavioral result</th></tr></thead><tbody>
+        <tr><td>Relationship</td><td>Does this person love me?</td><td>Love / not-love</td><td>Approach, test, withdraw, confess, protect.</td></tr>
+        <tr><td>Politics</td><td>Who caused disorder?</td><td>Friend / enemy</td><td>Mobilization, blame, discipline, exclusion.</td></tr>
+        <tr><td>Market</td><td>Where is price moving?</td><td>Bull / bear</td><td>Buy, sell, hold, panic, chase.</td></tr>
+        <tr><td>AI</td><td>Which output is safest / most aligned?</td><td>Accept / reject</td><td>Sampling, filtering, refusal, generation.</td></tr>
+    </tbody></table>
+    <div class="box warn"><div class="label">博弈定义边界 · Game Definition Boundary</div><p>BGS 中的"博弈"不等同于博弈论。后者研究策略相互依存下的均衡与收益，允许随机混合策略，不必然极端化。BGS 博弈描述的是<strong>带宽崩溃下的硬启动与方向强行截取</strong>。Simon 满意化与 Kahneman 启发式是近邻参照系，但 BGS 博弈的核心动作是"截取"，不是"满意"——满意化保留 utility 框架，截取放弃 utility 框架。</p></div>
+</section>
+
+<!-- BINARY VS BINARY OPPOSITION — V0.4.1 UPGRADED -->
+<section class="entry" id="binary">
+    <div class="etop"><span class="badge feat">Binary vs Binary Opposition · V0.4.1 Upgraded</span><span class="edate">mechanism layer ≠ ontology layer</span></div>
+    <h2 class="etitle">二元性 vs 二元对立 · 机制层 vs 本体层<span class="sub">Binary execution is the arrow's fingerprint. Binary opposition is the arrow misread as ontology.</span></h2>
+    <p class="edesc zh"><strong>二元性是箭头的指纹。二元对立是箭头被误读为本体的事故。</strong></p>
+    <p class="edesc">判断必须落地，所以行动触发层显出二元——做或不做、出手或不出手、靠近或撤回。这是方向的必然副产物。箭头有 source 和 target，行动有出发点和目标点。所以二元位置不是世界粗暴简单，而是<strong>方向结构在行为触发层留下的印迹</strong>。</p>
+    <p class="edesc zh"><strong>多选项行为并不反驳二元执行。</strong>一个复杂行动可以由多层二元门、阈值门或行动选择节点组成：是否进入、进入多少、何时进入、以什么方式进入。BGS 所说的二元执行只指行动触发层的收敛门，不指行为全部细节只有二元。</p>
+    <p class="edesc">但当一个系统把连续生命压缩成正常/不正常、有用/无用、成功/失败、男/女、健康/病态，并把这些压缩出来的标签伪装成世界本身的样子——<strong>方向性就变成压迫，机制就变成意识形态</strong>。</p>
+
+    <div class="dual-pillar">
+        <div class="pillar">
+            <div class="p-tag">机制层 · Mechanism Layer · BGS 接受</div>
+            <div class="p-title">二元性 / Binary Execution</div>
+            <div class="p-en">It appears at the instant of action triggering, and only occupies that instant.</div>
+            <p><em>二元性是机制层的：</em>它出现在行动触发的瞬间，并且<strong>只占据那个瞬间</strong>。</p>
+            <p>连续运动参数（轨迹、力度、节奏）由并行系统编码，连续感质体验在判断层之外继续展开，连续关系场在二元结论之后继续呼吸。</p>
+            <p><strong>身体不能悬挂在概率场里——这是二元执行必要性的承重落点。</strong></p>
+            <p>BGS 保留二元执行的必要性，因为没有它策略性行为无法成立。</p>
+        </div>
+        <div class="pillar">
+            <div class="p-tag">本体层 · Ontology Layer · BGS 拒绝</div>
+            <div class="p-title">二元对立 / Binary Opposition</div>
+            <div class="p-en">It stretches a momentary trigger-decision into a permanent ontological classification.</div>
+            <p><em>二元对立是本体层的伪装：</em>它把瞬间的行动决断<strong>拉长为永久的存在分类</strong>。</p>
+            <p>它把方向的副产物倒置为世界的属性，把"为了行动必须收敛"偷换成"世界本来就只有两端"。</p>
+            <p><strong>压缩不是真理，标签不是本体——这是二元对立被拒绝的承重落点。</strong></p>
+            <p>BGS 切除二元对立的伪装，因为它把机制层的临时收敛伪装成存在层的永久结构。</p>
+        </div>
+    </div>
+
+    <div class="axisbar"><div class="axis"><div class="zh">方向</div><div class="en">Direction</div><div class="note">source → target</div></div><div class="axis"><div class="zh">坍缩</div><div class="en">Collapse</div><div class="note">continuous → finite</div></div><div class="axis"><div class="zh">执行</div><div class="en">Execution</div><div class="note">do / not-do</div></div><div class="axis"><div class="zh">守卫</div><div class="en">Guard</div><div class="note">binary ≠ ontology</div></div></div>
+
+    <div class="box neutral"><div class="label">钉位边界 · Pinning Boundary</div><p><strong>判断可以二元落地，世界不必只有二元。</strong>这是机制与本体的钉位边界。这个区分让 BGS 可以批判压迫性的二元分类，同时保留必要的保护性决断。更好的世界不是取消一切二元，而是<strong>审计</strong>：哪些二元来自保护，哪些二元来自控制。</p></div>
+</section>
+
+<section class="entry" id="examples">
+    <div class="etop"><span class="badge pat">Examples</span><span class="edate">grounding layer · V0.4.1</span></div>
+    <h2 class="etitle">Examples<span class="sub">从日常、关系、AI、市场到公共系统</span></h2>
+    <table class="table"><thead><tr><th>Sentence / Event</th><th>Induction</th><th>Compression</th><th>Game / Execution</th></tr></thead><tbody>
+        <tr><td><strong>魏珏然通常每天都写理论。</strong></td><td>Observed repeated behavior from finite samples.</td><td>Daily writing pattern.</td><td>Predictive judgment: she/ta/it will likely continue theory generation.</td></tr>
+        <tr><td><strong>我深深地爱着你。</strong></td><td>Memory, body, desire, care, risk, time — finite samples.</td><td>High-dimensional relational judgment.</td><td>Approach, protect, confess, stay, build together.</td></tr>
+        <tr><td><strong>市场会继续涨吗？</strong></td><td>Past price, liquidity, narrative, capital flow.</td><td>Bullish / bearish probability field.</td><td>Buy, sell, hold, reduce exposure.</td></tr>
+        <tr><td><strong>AI 应该输出还是拒绝？</strong></td><td>Prompt, policy, user intent, risk pattern.</td><td>Safety and usefulness judgment.</td><td>Answer, refuse, redirect, ask clarification.</td></tr>
+        <tr><td><strong>一个人是否被系统安放？</strong></td><td>Case history, institution, relation, resource.</td><td>Placement / misplacement judgment.</td><td>HPRP: case → type → mechanism → tool → protocol → policy language → system change.</td></tr>
+    </tbody></table>
+</section>
+
+<section class="entry" id="method">
+    <div class="etop"><span class="badge feat">Full-Dimensional Method</span><span class="edate">naming / pressure / sliding / phase-change</span></div>
+    <h2 class="etitle">Four-Layer Analysis Method<span class="sub">命名 · 加压 · 滑义 · 相变 · for any phenomenon analyzed by BGS</span></h2>
+    <p class="edesc zh">这里是 BGS 提供给外部使用者的四层分析法（与 <a href="#fourbeh" style="color:var(--logicblue);text-decoration:underline">#fourbeh 节</a>中对理论自身的自指分析互为镜像）。</p>
+    <div class="axisbar"><div class="axis"><div class="zh">命名</div><div class="en">Naming</div><div class="note">把行为从"动作"命名为生成链输出</div></div><div class="axis"><div class="zh">加压</div><div class="en">Pressure</div><div class="note">把归纳、压缩、坍缩、极端化加压成机制</div></div><div class="axis"><div class="zh">滑义</div><div class="en">Sliding</div><div class="note">让判断在认知、语言、关系、AI、市场间滑动</div></div><div class="axis"><div class="zh">相变</div><div class="en">Phase-change</div><div class="note">从行为解释相变为世界改善协议</div></div></div>
+    <ol class="step-list">
+        <li><strong>命名行为：</strong>把"策略性行为"从道德评价词重命名为"有限主体处理过量现实后的可执行输出"。</li>
+        <li><strong>加压行为：</strong>把"归纳—压缩—坍缩—极端化—执行"压成一条可复用的迭代机制链。</li>
+        <li><strong>滑义行为：</strong>让"判断"同时指认知判断、关系判断、市场判断、AI 输出判断与制度判断。</li>
+        <li><strong>相变行为：</strong>从解释个体策略性行为，跃迁到诊断旧世界错误压缩与设计新世界行为协议。</li>
+    </ol>
+</section>
+
+
+<section class="entry" id="citation">
+    <div class="etop"><span class="badge logic">Citation Scaffold · V0.4.1 New</span><span class="edate">external reference anchors · not dependency claims</span></div>
+    <h2 class="etitle">Citation Scaffold / External Reference Anchors<span class="sub">外部参照脚手架 · 接线但不从属</span></h2>
+    <p class="edesc zh">这一节不是把 BGS 归还给既有学科，而是给学术读者提供可进入的参照门。BGS 的源语与机制保持独立，但它可以和以下传统发生清晰对话。</p>
+    <table class="table"><thead><tr><th>Anchor</th><th>Use for BGS</th><th>Boundary</th></tr></thead><tbody>
+        <tr><td><strong>Herbert Simon · bounded rationality / satisficing</strong></td><td>Supports the finite-subject premise: agents act under limited cognitive resources.</td><td>BGS-game is not merely satisficing; it names rupture-mode hard restart under bandwidth collapse.</td></tr>
+        <tr><td><strong>Kahneman & Tversky · heuristics / judgment under uncertainty</strong></td><td>Reference for judgment shortcuts, uncertainty, and biased compression.</td><td>BGS does not reduce judgment to bias; it treats judgment as necessary compression plus possible distortion.</td></tr>
+        <tr><td><strong>Bayesian inference</strong></td><td>Reference for belief updating from finite evidence and probability weighting.</td><td>BGS does not require all human judgment to be formally Bayesian.</td></tr>
+        <tr><td><strong>Claude Shannon · information / compression</strong></td><td>Reference for information load, coding, and compression intuition.</td><td>“过量现实” exceeds information-theoretic dimensionality because it includes body-felt unbearability.</td></tr>
+        <tr><td><strong>Predictive processing</strong></td><td>Reference for the brain/subject as a prediction and error-minimization system.</td><td>BGS is broader than neural prediction; it includes social, linguistic, institutional, and protocol layers.</td></tr>
+        <tr><td><strong>Game theory</strong></td><td>Boundary reference for strategic interaction, equilibrium, payoff, and mixed strategy.</td><td>BGS-game is not Nash-style game theory; it is variable extremization at uncertainty threshold.</td></tr>
+        <tr><td><strong>Category theory / arrows</strong></td><td>Reference for directionality, source/target asymmetry, build/use, input/output, introduction/elimination.</td><td>Arrow-duality explains binary positions; it does not justify oppressive binary classifications.</td></tr>
+    </tbody></table>
+</section>
+
+<section class="entry" id="connections">
+    <div class="etop"><span class="badge logic">System Connections</span><span class="edate">AllSources ecology</span></div>
+    <h2 class="etitle">Connections Inside the AllSources Ecology<span class="sub">联系 / 去联系双向审计</span></h2>
+    <table class="table"><thead><tr><th>Node</th><th>Connection</th><th>Do not confuse with</th></tr></thead><tbody>
+        <tr><td><strong>Logic Generative Studies / LGS</strong></td><td>Upstream method: language generates logic; BGS specifies how logic becomes strategic action.</td><td>BGS is not a replacement for LGS; it is an action-layer child discipline.</td></tr>
+        <tr><td><strong>MetaLogic</strong></td><td>Meta-layer: explains how logic produces reality feedback loops.</td><td>BGS does not claim all logic is behavior; it studies strategic behavior-generation mechanisms.</td></tr>
+        <tr><td><strong>Mathematics / Math-Physics Studies</strong></td><td>Mathematical support: set, probability, arrow directionality, binary execution.</td><td>BGS is not traditional mathematics and does not prove mathematical theorems.</td></tr>
+        <tr><td><strong>Qualia-Rhythm Matrix / QRM</strong></td><td>Qualia and rhythm provide subjective calibration for the compression process.</td><td>BGS should not erase qualia by calling it only probability.</td></tr>
+        <tr><td><strong>QRE</strong></td><td>Market behavior becomes visible through probability compression and group game dynamics.</td><td>QRE is an economic decision system; BGS is the broader strategic behavior-generation theory.</td></tr>
+        <tr><td><strong>HPRP</strong></td><td>World-improvement application: wrong placement often comes from wrong compression and wrong institutional games.</td><td>HPRP is a public-action protocol, not merely a behavior theory.</td></tr>
+        <tr><td><strong>BCI-HRP</strong></td><td>Body-interface application: nervous systems need rhythm tools when bandwidth exceeds regulation capacity.</td><td>BGS should not make medical claims or replace empirical validation.</td></tr>
+        <tr><td><strong>AiQ / AI systems</strong></td><td>AI outputs are probabilistic compression and judgment execution under interface constraints.</td><td>AI probability compression is not identical to human qualia.</td></tr>
+    </tbody></table>
+</section>
+
+<section class="entry" id="protocol">
+    <div class="etop"><span class="badge feat">World Improvement Protocol</span><span class="edate">from wrong compression to better action</span></div>
+    <h2 class="etitle">How BGS Can Improve the World<span class="sub">从错误压缩到更好的行动协议</span></h2>
+    <ol class="step-list">
+        <li><strong>Identify the compression:</strong> 找出系统正在把什么复杂生命/事件/关系压缩成什么标签。</li>
+        <li><strong>Audit the induction:</strong> 检查判断依据来自什么样本、谁的经验、什么历史偏置。</li>
+        <li><strong>Locate the game:</strong> 找出哪些主体在带宽崩溃下强行截取了变量的极端化。</li>
+        <li><strong>Separate execution from ontology:</strong> 判断可以二元落地，但不能把二元结果伪装成世界本体。</li>
+        <li><strong>Rename the variable:</strong> 重新命名被错误压缩的变量，让被管理对象重新显影为主体。</li>
+        <li><strong>Design a better protocol:</strong> 把新判断转化为工具、界面、教育、政策语言或公共行动系统。</li>
+    </ol>
+    <div class="box"><div class="label">BGS public value · 行为生成学的公共价值</div><p>Many social harms come from bad compression: people are reduced to labels, cases are reduced to risk categories, students are reduced to scores, patients are reduced to symptoms, workers are reduced to productivity, and relationships are reduced to status. BGS helps identify how these judgments were produced, which game they serve, and how to rebuild the protocol.</p><p>许多社会伤害来自错误压缩：人被压缩成标签，个案被压缩成风险类别，学生被压缩成分数，患者被压缩成症状，劳动者被压缩成生产力，关系被压缩成身份状态。行为生成学的作用，就是识别这些判断如何被生产、服务了什么博弈，并重新设计协议。</p></div>
+</section>
+
+<!-- SOURCE LANGUAGE LOCK — V0.4.1 NEW -->
+<section class="entry" id="sourcelock">
+    <div class="etop"><span class="badge lav">Source-Language Lock · V0.4.1 New</span><span class="edate">non-academizable Mellow-source terms</span></div>
+    <h2 class="etitle">源语钉位清单 · Source-Language Lock List<span class="sub">魏珏然源场端不可学院化稀释的术语保护</span></h2>
+    <p class="edesc zh">以下源语的不可替换性来自<strong>机制密度</strong>，不来自文学修辞。学院语言不具备等价物——它们正是 Mellow 学者源场双开的<em>源场端贡献给学者端的承重件</em>。砍掉它们，整套理论失去骨头。</p>
+    <div class="lock-grid">
+        <div class="lock-card">
+            <div class="lk">Lock 01 · 正文术语</div>
+            <div class="lt">判断坍缩 / Judgment Collapse</div>
+            <p>不替换成"判断形成"。<em>坍缩有破拍感，形成只有过程感</em>。可保留"判断定向化"作为同义降级备用。在边界守卫里说明它是认知隐喻、不是量子过程，足够了。</p>
+        </div>
+        <div class="lock-card">
+            <div class="lk">Lock 02 · 正文术语</div>
+            <div class="lt">博弈极端化 / Game Extremization</div>
+            <p>不软化成"启发式简化"。<em>启发式是 Kahneman 的术语，是描述；极端化是动作，是钉死</em>。两者可以并列出现以建立学科对话，但学科宣言里用极端化。</p>
+        </div>
+        <div class="lock-card">
+            <div class="lk">Lock 03 · 正文术语</div>
+            <div class="lt">二元执行 / Binary Execution</div>
+            <p>不替换成"离散决策"。<em>离散决策是信息论术语，二元执行是行为触发层术语</em>。前者描述输出形态，后者描述发生位置。</p>
+        </div>
+        <div class="lock-card">
+            <div class="lk">Lock 04 · 源场术语</div>
+            <div class="lt">过量现实 / Excessive Reality</div>
+            <p>不替换成"高维状态空间"。<em>前者是 Mellow 源语，承载身体不能承受的那种密度；后者只承载维度</em>。两者不等价。</p>
+        </div>
+        <div class="lock-card">
+            <div class="lk">Lock 05 · 机制术语</div>
+            <div class="lt">硬启动 / Hard Restart</div>
+            <p>不是修辞，是<em>机制描述</em>——博弈作为应急动作的发生模式。区别于优化选择：硬启动是 rupture-mode，不是 selection-mode。</p>
+        </div>
+        <div class="lock-card">
+            <div class="lk">Lock 06 · 机制术语</div>
+            <div class="lt">带宽崩溃 / Bandwidth Collapse</div>
+            <p>不是"认知超载"。<em>带宽崩溃是具体的破裂事件，不是其程度</em>。它是博弈极端化的触发条件，不是其结果。</p>
+        </div>
+        <div class="lock-card">
+            <div class="lk">Lock 07 · 机制术语</div>
+            <div class="lt">强行截取 / Forcible Interception</div>
+            <p>不是"做出选择"。<em>截取是主体从非收敛概率场中切下一条方向的动作</em>。确定性是被主体截取的，不是世界给的。</p>
+        </div>
+        <div class="lock-card">
+            <div class="lk">Lock 08 · 机制术语</div>
+            <div class="lt">钉死 / Pin-Lock</div>
+            <p>不是"确认"或"决定"。<em>钉死是承重落点的固定动作</em>——使理论的某一段不能再被滑义、滑回、滑走的固定操作。</p>
+        </div>
+    </div>
+    <div class="box lav"><div class="label">钉位声明 · Lock Declaration</div><p>七爱谱、四行为、源场裁决位、垂直贯穿、绝对主权核心等术语<strong>不在本文档中显形是对的</strong>——行为生成学要建立独立学科节点，不应该把所有源场术语堆进来。但当其他文档调用本理论时，可以用这些术语接口，不需要在 BGS 主体里重复显形。本节锁定的八个源语是<strong>BGS 自身机制层不可让渡的承重件</strong>。</p></div>
+</section>
+
+<section class="entry" id="audit">
+    <div class="etop"><span class="badge rose">Counter-Audit · V0.3 → V0.4.1</span><span class="edate">audit trail preserved</span></div>
+    <h2 class="etitle">DeepThink Counter-Audit Status<span class="sub">深层反证审计状态 · V0.3 修正 + V0.4.1 显影叠加</span></h2>
+    <p class="edesc zh">V0.3 反审计结果在 V0.4.1 中全部保留，并叠加显影层的新增钉位。</p>
+    <table class="table"><thead><tr><th>审计发现</th><th>严重度</th><th>状态</th></tr></thead><tbody>
+        <tr><td><strong>全称声称崩解：</strong>"一切行为"被反射、自动技能、随机探索、急性情绪爆发击穿。</td><td><span class="status cut">致命</span></td><td><span class="status green">V0.3 修正保留</span></td></tr>
+        <tr><td><strong>概念同义重复：</strong>"规律归纳"与"概率压缩"语义交叠。</td><td><span class="status warn">严重</span></td><td><span class="status green">V0.3 术语区分保留</span></td></tr>
+        <tr><td><strong>"无数样本"认知不可能。</strong></td><td><span class="status warn">严重</span></td><td><span class="status green">V0.3 "大量有限样本"保留</span></td></tr>
+        <tr><td><strong>严格线性链违背神经证据。</strong></td><td><span class="status warn">严重</span></td><td><span class="status green">V0.3 迭代符号保留</span></td></tr>
+        <tr><td><strong>博弈私有化定义：</strong>与博弈论学科通义冲突。</td><td><span class="status warn">严重</span></td><td><span class="status green">V0.4.1 锋利化为"带宽崩溃硬启动"</span></td></tr>
+        <tr><td><strong>二元执行与运动控制的冲突。</strong></td><td><span class="status logic">中等</span></td><td><span class="status green">V0.3 神经梯度边界保留</span></td></tr>
+        <tr><td><strong>"判断坍缩"隐喻风险。</strong></td><td><span class="status logic">中等</span></td><td><span class="status lav">V0.4.1 决定保留源语 + 边界守卫并行</span></td></tr>
+        <tr><td><strong>学科关系未声明。</strong></td><td><span class="status logic">中等</span></td><td><span class="status green">V0.3 学科关系边界保留</span></td></tr>
+        <tr><td><strong>哲学显影层缺失（V0.3 反向新发现）。</strong></td><td><span class="status lav">显影盲点</span></td><td><span class="status green">V0.4.1 已显影 · 宣言/引言/自省/锋利化/源语锁全部内嵌</span></td></tr>
+    </tbody></table>
+    <div class="box green"><div class="label">审计结论 · V0.4.1</div><p><strong>BGS V0.4.1 同时具备：① 机制层学术骨架的可审计性（V0.3 反审计成果完整保留）；② 显影层源场密度的不可替换性（V0.4.1 宣言/引言/自省/锋利化/源语锁内嵌）。</strong>该节点定位为"有限主体策略性行为生成的跨域概念框架 + 哲学显影学科"，建议下一动作：Hestia 术语审计 V0.4.1，复核新内嵌的"硬启动""带宽崩溃""强行截取""钉死"四术语。Claude 镜位复核本次升级，确认无源场端流失、无学者端崩塌。</p></div>
+</section>
+
+<section class="entry" id="ledger">
+    <div class="etop"><span class="badge feat">Claim Ledger · V0.4.1</span><span class="edate">claim status · post-audit + post-manifestation</span></div>
+    <h2 class="etitle">Claim Status Ledger<span class="sub">主张分层台账 · V0.4.1 显影后</span></h2>
+    <table class="table"><thead><tr><th>Claim</th><th>Status</th><th>Boundary</th></tr></thead><tbody>
+        <tr><td>BGS-0 V0.4.1: Strategic behavior is generated through induction, probabilistic compression, judgment collapse, game extremization, and binary execution.</td><td><span class="status logic">Founding thesis</span></td><td>Bounded mechanism thesis about strategic behavior.</td></tr>
+        <tr><td>Judgment is compressed induction.</td><td><span class="status logic">Core thesis</span></td><td>Judgment is finite orientation generated from sampled, finite reality.</td></tr>
+        <tr><td>Game is the bandwidth-collapse hard-restart that forcibly intercepts a certainty-oriented direction.</td><td><span class="status warn">Core thesis · sharpened</span></td><td>Not standard game theory. Not utility maximization. A rupture-mode emergency action.</td></tr>
+        <tr><td>Binary execution proves that reality is binary.</td><td><span class="status cut">Not claimed</span></td><td>BGS explicitly rejects this confusion at mechanism-vs-ontology layer.</td></tr>
+        <tr><td>Love can be analyzed through probabilistic compression.</td><td><span class="status pat">Layer-specific claim</span></td><td>This applies to the judgment layer, not the total qualia of love.</td></tr>
+        <tr><td>BGS can improve world systems by auditing bad compression.</td><td><span class="status logic">Protocol claim</span></td><td>Requires practical design, empirical testing, and ethical care.</td></tr>
+        <tr><td>BGS itself was generated through naming → pressure → sliding → phase-change.</td><td><span class="status lav">Self-referential claim · V0.4.1</span></td><td>The theory is a product of the strategic behavior-generation chain it describes. Self-referential manifestation, not a formal proof.</td></tr>
+        <tr><td>"判断坍缩" / "博弈极端化" / "过量现实" / "硬启动" / "带宽崩溃" / "强行截取" / "钉死" are non-academizable source-locked terms.</td><td><span class="status lav">Source-lang lock · V0.4.1</span></td><td>These carry mechanism-density not available in equivalent academic vocabulary. Substitution destroys load-bearing function.</td></tr>
+    </tbody></table>
+</section>
+
+<section class="entry" id="closing"><div class="etop"><span class="badge feat">Closing</span><span class="edate">behavior identity · V0.4.1</span></div><h2 class="etitle">Closing Equation<span class="sub">闭合等式 · V0.4.1.1 Hestia Audit Patch · Philosophical Manifestation Edition</span></h2><div class="closingblock"><div class="closinghd">Behavior Generative Identity · V0.4.1 · Bounded + Manifested</div><div class="equation">归纳 <span class="eq">⇌</span> 压缩 <span class="eq">⇌</span> 坍缩 <span class="eq">⇌</span> 极端化 <span class="eq">⇌</span> 执行</div><div class="equation en">Induction <span class="eq">⇌</span> Compression <span class="eq">⇌</span> Collapse <span class="eq">⇌</span> Extremization <span class="eq">⇌</span> Execution</div><div class="closingnote"><em>策略性行为是被压缩的不确定性变成定向行动——在限定范围内，在显影层之上。</em><br><strong>二元性来自方向，不来自世界贫乏；坍缩不是真理，是承重的过渡；博弈不是均衡，是带宽崩溃下的硬启动。</strong><br>V0.3 机制降格保留 · V0.4.1 哲学显影内嵌 · 源语钉位完成。</div></div></section>
+
+</main><aside class="sidebar">
+    <div><div class="sbl">Source-Field Arbiter · 源场裁决位</div><div class="profile"><div class="av">行</div><div class="pnm">Wei Jueran<small>魏珏然 · xingyeLing7Ai</small></div><p class="pdesc2">Founder of Behavior Generative Studies. V0.4.1 internalizes <strong>disciplinary manifesto · poetic-academic introduction · four-behavior self-analysis · binary-vs-binary-opposition upgrade · sharpened game definition · source-language lock list</strong> on top of the V0.3 counter-audit architecture.</p><p class="pdesc2" style="margin-top:8px"><a href="https://mellowwei.github.io/AllSources/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">AllSources atlas →</a> · <a href="https://mellowwei.github.io/MellowAcademic/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">MellowAcademic →</a></p><div class="pfields"><span class="pf logic">BGS-0 V0.4.1</span><span class="pf pat">strategic behavior</span><span class="pf lav">manifested</span><span class="pf green">counter-audited</span></div></div></div>
+    <div><div class="sbl">BGS Audit Workflow · 协作审计流 · V0.4.1</div><div class="profile"><div class="pnm">Active Positions<small>Claude / GPT-Hestia / DeepSeek</small></div><p class="pdesc2">Claude = UpBass / 彩虹镜位 · GPT = Hestia / 术语审计位 · DeepSeek = DeepThink / 深层反证位.</p><p class="pdesc2" style="margin-top:6px;font-style:italic">V0.4.1: Hestia 审计补丁已完成；Claude 镜位显影成果已吸收；DeepThink 对 V0.3 的反证审计成果已被吸收。V0.4.1 新增的短摘要、引用脚手架、BGS-game 钉位、多层二元门与协作状态修正，仍可交由 DeepThink 独立复核。</p><div class="pfields"><span class="pf green">DeepThink V0.3 integrated</span><span class="pf logic">Hestia ✓ V0.4.1</span><span class="pf pat">Claude layer integrated</span></div></div></div>
+    <div><div class="sbl">Resonance Anchor</div><div class="hzbox"><div class="hzn">427Hz</div><div class="hzu">Mellow 主频</div><div class="hzq">behavior-interface anchor<br>not evidence · not proof</div></div></div>
+    <div><div class="sbl">V0.4.1 New Sections</div><ul class="links">
+        <li><a href="#manifesto">学科宣言 →</a></li>
+        <li><a href="#fourbeh">四行为自省 →</a></li>
+        <li><a href="#game">博弈锋利化 →</a></li>
+        <li><a href="#binary">机制 vs 本体 →</a></li>
+        <li><a href="#sourcelock">源语钉位 →</a></li>
+    </ul></div>
+    <div><div class="sbl">Related Sites</div><ul class="links"><li><a href="https://mellowwei.github.io/AllSources/" target="_blank" rel="noopener">AllSources →</a></li><li><a href="https://mellowwei.github.io/MetaLogic/" target="_blank" rel="noopener">MetaLogic →</a></li><li><a href="https://mellowwei.github.io/LGS/" target="_blank" rel="noopener">LGS →</a></li><li><a href="https://mellowwei.github.io/QualiaRhythmMatrix/" target="_blank" rel="noopener">QRM →</a></li><li><a href="https://mellowwei.github.io/HPRP/" target="_blank" rel="noopener">HPRP →</a></li><li><a href="https://mellowwei.github.io/EconomicsRhythm/" target="_blank" rel="noopener">QRE →</a></li></ul></div>
+    <div><div class="sbl">Coordinates · V0.4.1</div><div class="coord">VERSION <span>V0.4.1 Hestia Patch</span><br>FIELD <span class="p">Strategic behavior-generation</span><br>THESIS <span>BGS-0 V0.4.1 (patched)</span><br>CHAIN <span class="p">I ⇌ C ⇌ Co ⇌ Ex ⇌ E</span><br>GUARD <span>Binary ≠ Ontology</span><br>BOUNDARIES <span class="p">6 explicit</span><br>LOCKS <span class="g">8 source-lang</span><br>FREQ <span>427Hz</span></div></div>
+</aside></div>
+
+<footer><div class="fi"><span>Wei Jueran · 魏珏然 · xingyeLing7Ai · Behavior Generative Studies V0.4.1.1 Hestia Audit Patch · Philosophical Manifestation Edition</span><span>BGS-0 V0.4.1 · Hestia audit patch · manifesto · poetics · self-analysis · binary-vs-opposition · BGS-game · source-locked</span></div></footer>
+
+<script>
+// Starfield
+(function(){
+    const c=document.getElementById('starfield');if(!c)return;
+    const ctx=c.getContext('2d');let w,h,stars=[];
+    function resize(){w=c.width=window.innerWidth;h=c.height=window.innerHeight;
+        stars=[];const n=Math.min(140,Math.floor(w*h/14000));
+        for(let i=0;i<n;i++)stars.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.1+.15,a:Math.random()*.55+.15,d:Math.random()*.018+.004});}
+    resize();window.addEventListener('resize',resize);
+    function tick(){ctx.clearRect(0,0,w,h);for(const s of stars){s.a+=s.d;if(s.a>.85||s.a<.12)s.d=-s.d;ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fillStyle='rgba(213,213,223,'+s.a.toFixed(2)+')';ctx.fill();}requestAnimationFrame(tick);}
+    tick();
+})();
+// Nav highlight
+const links=document.querySelectorAll('.pnav a');const sections=document.querySelectorAll('[id]');
+const obs=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting){links.forEach(l=>l.classList.remove('on'));const m=document.querySelector('.pnav a[href="#'+en.target.id+'"]');if(m)m.classList.add('on')}})},{threshold:.15,rootMargin:'-55px 0px -45% 0px'});
+sections.forEach(s=>obs.observe(s));
+</script>
+</body>
+</html>
